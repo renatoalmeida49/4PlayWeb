@@ -60,3 +60,10 @@ body {
 .cad {
 	margin-right: 50px;
 }
+
+.telainicial {
+	width: 100%;
+	max-width: 980px;
+	margin: auto;
+	background-color: red;
+}

@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div class="login cadastro">
-				<form method="POST" onsubmit="return validaCampos();">
+				<form method="POST" action="adicionar.php" onsubmit="return validaCampos();">
 					Nome:
 					<br><input type="text" name="nome" id="nome" class="form-control"><br><br>
 					Login:
@@ -19,7 +19,8 @@
 					<br><input type="password" name="senha" id="confirmaSenha" class="form-control"><br>
 
 					<br><input type="submit" value="Criar" class="button cad">
-					<input type="submit" value="Cancelar" class="button cad">
+
+					<a href="index.php"><input type="button" value="Cancelar" class="button cad" onclick=""></a>
 				</form>
 			</div>
 	</body>
