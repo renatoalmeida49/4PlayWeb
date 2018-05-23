@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: "Maiandra GD";
+}
+
+.all {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -175px;
+    margin-left: -500px;
+    background-color: blue;
+    width: 1000px;
+    height: 350px;
+    
+    background-image: url('../images/fundo.jpg');
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    color: black;
+    font-size: 48px;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+}
+
+label {
+    display: inline-block;
+    width: 140px;
+    margin-right: 20px;
+}
+
+input {
+    width: 250px;
+    margin: 5px;
+    height: 25px;
+}
+
+button {
+    margin: 10px;
+    width: 150px;
+}
+
+#botao {
+    font-family: "Maiandra GD";
+    font-size: 23px;
+}
+
+.footerform {
+    diplay: flex;
+    justify-content: space-around;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}

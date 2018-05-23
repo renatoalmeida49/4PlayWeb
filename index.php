@@ -2,35 +2,45 @@
 <html>
     <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/styleIndex.css">
 	<title>4Play</title>
     </head>
     
     <body>
+        <div class="all">
+            <header>
+                <div class="container">
+                    <div class="nome">
+                        <h1>4Play</h1>
+                    </div>
+                </div>
+            </header>
         
-	<div class="title">
-            <h1>4Play</h1>
-	</div>
-
-	<div class="box">
-			
-            <div class="logo">
-		<img src="assets/images/logo.png">
-            </div>
-	
-            <div class="login">
-		<form method="POST" action="validacao.php">
-                    Login:
-                    <br><input type="text" name="login" class="form-control"><br>
-                    <br>Senha:
-                    <br><input type="password" name="senha" class="form-control"><br>
-
-                    <br><input type="submit" value="Enviar" class="button">
-
-                    <a href="views/cadastro.php">Criar login</a>
-		</form>
-            </div>
+            <section>
+            
+                <div class="container sec">
+                    <div class="logo">
+                        <img src="assets/images/logo.png" width="300" height="300"/>
+                    </div>
+                
+                    <div class="formulario">
+                        <form method="post" action="validacao.php">
+                            <label>Login:</label><input type="text" name="login"/></br>
+                            <label>Senha:</label><input type="password" name="senha"/></br>
+                        
+                            <div class="footerform">
+                                <div class="buttons">
+                                    <button id="botao" type="submit" value="Acessar">Acessar</button><a href="views/cadastro.php"><button id="botao" type="button">Criar login</button></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>    
+            </section>
+        
+            <footer>
+            
+            </footer>
         </div>
-		
-	</body>
+    </body>
 </html>
