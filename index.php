@@ -2,45 +2,42 @@
 <html>
     <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="assets/css/styleIndex.css">
+        <link rel="icon" type="imagem/png" href="assets/images/logo.png" />
+	<link rel="stylesheet" type="text/css" href="assets/css/styleIndex.css" />
 	<title>4Play</title>
     </head>
     
     <body>
-        <div class="all">
-            <header>
-                <div class="container">
-                    <div class="nome">
-                        <h1>4Play</h1>
-                    </div>
+        <header>
+            <div class="container">
+                <div class="nome">
+                    <h1>4Play</h1>
                 </div>
-            </header>
+            </div>
+        </header>
         
-            <section>
-            
-                <div class="container sec">
-                    <div class="logo">
-                        <img src="assets/images/logo.png" width="300" height="300"/>
-                    </div>
+        <section>
+            <div class="container sec">
+                <div class="logo">
+                    <img src="assets/images/logo.png" width="300" height="300"/>
+                </div>
                 
-                    <div class="formulario">
-                        <form method="post" action="validacao.php">
-                            <label>Login:</label><input type="text" name="login"/></br>
-                            <label>Senha:</label><input type="password" name="senha"/></br>
+                <div class="formulario">
+                    <form method="post" action="validacao.php">
+                        <label>Login:</label><input type="text" name="login"/></br>
+                        <label>Senha:</label><input type="password" name="senha"/></br>
                         
-                            <div class="footerform">
-                                <div class="buttons">
-                                    <button id="botao" type="submit" value="Acessar">Acessar</button><a href="views/cadastro.php"><button id="botao" type="button">Criar login</button></a>
-                                </div>
+                        <div class="footerform">
+                            <div class="buttons">
+                                <button id="botao" type="submit" value="Acessar">Acessar</button><a href="views/cadastro.php"><button id="botao" type="button">Criar login</button></a>
                             </div>
-                        </form>
-                    </div>
-                </div>    
-            </section>
+                        </div>
+                    </form>
+                </div>
+            </div>    
+        </section>
         
-            <footer>
-            
-            </footer>
-        </div>
+        <footer>
+        </footer>
     </body>
 </html>

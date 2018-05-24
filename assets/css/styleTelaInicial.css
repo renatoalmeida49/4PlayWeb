@@ -1,0 +1,84 @@
+body {
+    margin: 10px;
+    font-family: "Maiandra GD";
+    background-image: url('../images/fundo.jpg');
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.menubar {
+    padding: 5px;
+    display: flex;
+    width: 100%;
+    background-color: #cccccc;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.topo {
+    margin: 35px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nome {
+    color: black;
+    font-size: 48px;
+}
+
+.hellouser {
+    color: black;
+    font-size: 23px;
+}
+
+.bot {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#botao {
+    width: 230px;
+    font-size: 34px;
+}
+
+a {
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+a:visited {
+    color: black;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+.fotofooter {
+    display: flex;
+    justify-content: center;
+}
+
+.sec {
+    display: flex;
+    flex-direction: column;
+}
+

@@ -1,20 +1,8 @@
 body {
     margin: 0;
     font-family: "Maiandra GD";
-}
-
-.all {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -500px;
-    margin-top: -220px;
-    width: 1000px;
-    height: 421px;
-    padding-bottom: 20px;
     background-image: url('../images/fundo.jpg');
     background-size: cover;
-    
 }
 
 header {
