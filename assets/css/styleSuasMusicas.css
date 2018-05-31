@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    font-family: "Maiandra GD";
+    background-image: url('../images/fundo.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+section {
+    display: flex;
+    background-color: red;
+    width: 90%;
+}
+
+.tabelaSuasMusicas {
+    flex: 2;
+    background-color: blue;
+    margin: 4px;
+}
+
+table {
+    width: 100%;
+}
+
+.infoMusica {
+    flex: 1;
+    background-color: pink;
+    margin: 4px;
+    padding: 4px;
+}
+
+.letra {
+    flex: 3;
+    background-color: yellow;
+    margin: 4px;
+    padding: 4px;
+}
