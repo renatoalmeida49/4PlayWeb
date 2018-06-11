@@ -1,6 +1,8 @@
 <?php
 
-require "controller/config.php";
+require "config/Database.php";
+
+
 
 $sql = "select * from users where use_log='".$_POST['login']."' and use_senha='".$_POST['senha']."'";
 $resultset = $pdo->query($sql);

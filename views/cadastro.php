@@ -19,7 +19,7 @@
         <section>
             <div class="container">
                 <div class="formulario">
-                    <form method="post" action="../controller/adicionar.php">
+                    <form method="post" action="../controllers/UserController.php">
                         <label>Nome:</label><input type="text" name="nome"/><br/>
                         <label>Login:</label><input type="text" name="login"/><br/>
                         <label>Senha:</label><input type="password" name="senha"/><br/>
