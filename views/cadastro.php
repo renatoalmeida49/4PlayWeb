@@ -22,12 +22,12 @@
                     <form method="post" action="../controllers/UserController.php">
                         <label>Nome:</label><input type="text" name="nome"/><br/>
                         <label>Login:</label><input type="text" name="login"/><br/>
-                        <label>Senha:</label><input type="password" name="senha"/><br/>
-                        <label>Repita senha:</label><input type="password" name="confSenha"/><br/>
+                        <label>Senha:</label><input type="password" size="32" name="senha"/><br/>
+                        <label>Repita senha:</label><input type="password" size="32" name="confSenha"/><br/>
                             
                         <div class="footerform">
                             <div class="buttons">
-                                <button id="botao" type="submit">Cadastrar</button><a href="../index.php"><button id="botao" type="button">Cancelar</button></a>
+                                <button id="botao" name="userControl" value="Cadastrar" type="submit">Cadastrar</button><a href="../index.php"><button id="botao" type="button">Cancelar</button></a>
                             </div>
                         </div>
                     </form>

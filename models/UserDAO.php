@@ -19,7 +19,5 @@ class UserDAO {
         $stmt->bindParam(3, $senha);
         
         $query = $stmt->execute();
-        
-        header("Location: ../index.php");
     }
 }

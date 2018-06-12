@@ -23,13 +23,13 @@
                 </div>
                 
                 <div class="formulario">
-                    <form method="post" action="validacao.php">
+                    <form method="post" action="controllers/UserController.php">
                         <label>Login:</label><input type="text" name="login"/></br>
-                        <label>Senha:</label><input type="password" name="senha"/></br>
+                        <label>Senha:</label><input type="password" size="32" name="senha"/></br>
                         
                         <div class="footerform">
                             <div class="buttons">
-                                <button id="botao" type="submit" value="Acessar">Acessar</button><a href="views/cadastro.php"><button id="botao" type="button">Criar login</button></a>
+                                <button id="botao" type="submit" value="Acessar" name="userControl">Acessar</button><a href="views/cadastro.php"><button id="botao" type="button">Criar login</button></a>
                             </div>
                         </div>
                     </form>
