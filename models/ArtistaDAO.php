@@ -52,6 +52,8 @@ class ArtistaDAO {
             $query = $stmt->execute();
             
             return true;
+        } else {
+            return false;
         }
     }
     
