@@ -13,27 +13,21 @@ class MusicaDAO {
         $res = $this->buscarMusica($musica);
         
         if ($res == null) {
-            $mus_use_cod = $_SESSION['use_cod'];
-            $mus_art_cod = $musica->getMus_art_cod();
-            $mus_nome = $musica->getMus_nome();
-            $mus_tipo = $musica->getMus_tipo();
-            $mus_capo = $musica->getMus_capo();
-            $mus_idioma = $musica->getMus_idioma();
-            $mus_instrumento = $musica->getMus_instrumento();
-            $mus_letra = $musica->getMus_letra();
+            
+            $codArtista = $this->buscarCodArtista($musica->getMus_art_cod(), $musica->getMus_use_cod());
         
             $query = "INSERT INTO musicas (mus_use_cod, mus_art_cod, mus_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra) "
                 . "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         
             $stmt = $this->db->getConnection()->prepare("INSERT INTO musicas (mus_use_cod, mus_art_cod, mus_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bindParam(1, $mus_use_cod);
-            $stmt->bindParam(2, $mus_art_cod);
-            $stmt->bindParam(3, $mus_nome);
-            $stmt->bindParam(4, $mus_tipo);
-            $stmt->bindParam(5, $mus_capo);
-            $stmt->bindParam(6, $mus_idioma);
-            $stmt->bindParam(7, $mus_instrumento);
-            $stmt->bindParam(8, $mus_letra);
+            $stmt->bindParam(1, $_SESSION['use_cod']);
+            $stmt->bindParam(2, $codArtista);
+            $stmt->bindParam(3, $musica->getMus_nome());
+            $stmt->bindParam(4, $musica->getMus_tipo());
+            $stmt->bindParam(5, $musica->getMus_capo());
+            $stmt->bindParam(6, $musica->getMus_idioma());
+            $stmt->bindParam(7, $musica->getMus_instrumento());
+            $stmt->bindParam(8, $musica->getMus_letra());
         
             $query = $stmt->execute();
             
@@ -72,4 +66,49 @@ class MusicaDAO {
             return null;
         }
     }
+    
+    //Essa função existe porque o programa lhe dar uma String para artista
+    //e a tabela músicas aceita apenas int para artista
+    public function buscarCodArtista($nome, $cod) {
+        $query = "select * from artistas where art_nome='{$nome}' and art_use_cod='{$cod}'";
+        
+        $stmt = $this->db->getConnection()->execute($query);
+        
+        $found = $stmt->fetch();
+        
+        return $found['art_cod'];
+    }
+    
+    public function atualizar(Musica $musica, String $altera){
+        $codArtista = $this->buscarCodArtista($musica->getMus_art_cod(), $musica->getMus_use_cod());
+        $query = "update musicas set mus_art_cod=?, mus_nome=?, mus_capo=?, mus_idioma=?, mus_instrumento=?, mus_letra=? where mus_nome=? and mus_use_cod=?";
+        
+        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt->bindParam(1, $codArtista);
+        $stmt->bindParam(2, $musica->getMus_nome());
+        $stmt->bindParam(3, $musica->getMus_capo());
+        $stmt->bindParam(4, $musica->getMus_idioma());
+        $stmt->bindParam(5, $musica->getMus_instrumento());
+        $stmt->bindParam(6, $musica->getMus_letra());
+        $stmt->bindParam(7, $altera);
+        $stmt->bindParam(8, $musica->getMus_use_cod());
+        
+        $query = $stmt->execute();
+        
+        return true;
+    }
+    
+    public function excluir($musica, $userCod){
+        $query = "delete from musicas where mus_nome=? and mus_use_cod=?";
+        
+        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt->bindParam(1, $musica);
+        $stmt->bindParam(2, $userCod);
+        
+        $query = $stmt->execute();
+        
+        return true;
+    }
+    
+    
 }
