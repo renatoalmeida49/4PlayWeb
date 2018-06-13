@@ -110,5 +110,24 @@ class MusicaDAO {
         return true;
     }
     
-    
+    public function seleciona($cod) {
+        $linhas = array();
+        try {
+            $stmt = $this->db->getConnection()->prepare("SELECT select mus_nome, art_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento from musicas inner join artistas on mus_art_cod = art_cod where mus_use_cod = '?' order by mus_nome");
+            $stmt->bindParam(1, $cod);
+            $stmt->execute();
+            
+            $result = $stmt->fetchAll();
+            
+            if (count($result)){
+                foreach ($result as $row) {
+                    $linhas[] = $row;
+                }
+            }
+            
+            return $linhas;
+        } catch (PDOException $ex) {
+            echo "Falha ao buscar músicas. ".$ex->getMessage();
+        }
+    }
 }

@@ -3,21 +3,29 @@ body {
     font-family: "Maiandra GD";
     background-image: url('../images/fundo.jpg');
     background-size: cover;
-    display: flex;
     justify-content: center;
-    flex-direction: row;
+    
 }
 
 section {
     display: flex;
+    justify-content: center;
+}
+
+.container {
     background-color: red;
-    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .tabelaSuasMusicas {
     flex: 2;
     background-color: blue;
     margin: 4px;
+    min-height: 143px;
 }
 
 table {
@@ -29,6 +37,7 @@ table {
     background-color: pink;
     margin: 4px;
     padding: 4px;
+    min-height: 143px;
 }
 
 .letra {
@@ -36,4 +45,15 @@ table {
     background-color: yellow;
     margin: 4px;
     padding: 4px;
+    min-height: 143px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+.tabela {
+    display: flex;
+    flex-direction: column;
 }
