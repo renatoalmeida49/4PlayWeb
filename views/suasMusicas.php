@@ -27,22 +27,22 @@
                     </div>
                     
                     <div class="buttonFooter">
-                        <a href="../../views/adicionarMusica.php"><button type="button">Adicionar música</button></a>
+                        <a href="adicionarMusica.php"><button type="button">Adicionar música</button></a>
                     </div>
                 </div>
                             
                 <div class="styleButtons">
                     <div class="infoMusica">
-                        Nome:<br/>
-                        Artista:<br/>
-                        Tipo:<br/>
-                        Capo:<br/>
-                        Idioma:<br/>
-                        Instrumento:<br/>
+                        <img src="" height="" width=""/>Nome:<br/>
+                        <img src="../assets/images/artist-icon.png" height="32" width=32/> Artista:<br/>
+                        <img src="../assets/images/type-icon.png" height=32 width="32"/> Tipo:<br/>
+                        <img src="../assets/images/capo-icon.png" height="32" width="32"/> Capo:<br/>
+                        <img src="../assets/images/language-icon.png" height="32" width="32"/> Idioma:<br/>
+                        <img src="../assets/images/instrument-icon.png" height="32" width="32"/> Instrumento:<br/>
                     </div>
                     
                     <div class="buttonFooter">
-                        <button>Editar</button>
+                        <a href="editarMusica.php"><button>Editar</button></a>
                     </div>
                 </div>
                 
@@ -55,7 +55,7 @@
         
         <footer>
             <div class="container">
-                <button>Voltar</button>
+                <a href="telaInicial.php"><button>Voltar</button></a>
             </div>
         </footer>
     </body>

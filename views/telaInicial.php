@@ -23,7 +23,7 @@
                 </div>
                 
                 <div class="bot">
-                    <a href="suasmusicas.php"><button id="botao" type="button">Suas músicas</button></a>
+                    <a href="suasMusicas.php"><button id="botao" type="button">Suas músicas</button></a>
                     <img src="../assets/images/logo.png" width="200" height="200" />
                     <a href="playlists.php"><button id="botao" type="button">Playlists</button></a>
                 </div>

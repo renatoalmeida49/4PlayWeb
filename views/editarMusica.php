@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
-        <link rel="stylesheet" type="text/css" href="..assets/css/stylePlaylists.css"/>
-        <title>Playlists</title>
+        <link rel="stylesheet" type="text/css" href="..assets/css/styleEditarMusica.css"/>
+        <title>Editar música</title>
     </head>
     <body>
         <header></header>

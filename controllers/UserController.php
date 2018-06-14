@@ -52,7 +52,7 @@ function acessar() {
         $_SESSION['use_nome'] = $cod['use_nome'];
         $_SESSION['use_log'] = $cod['use_log'];
 
-	header("Location: ../views/telainicial.php");
+	header("Location: ../views/telaInicial.php");
 
     } else {
 	echo "User not found";
