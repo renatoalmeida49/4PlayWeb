@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once '../config/DataBase.php';
 require_once '../models/Musica.php';
