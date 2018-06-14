@@ -12,10 +12,10 @@ session_start();
     <body>
         <header></header>
         <section>
-            <form method="post" action="../controllers/ArtistController.php">
+            <form method="post" action="../controllers/ArtistaController.php">
                 <label>Nome:</label><input type="text" name="nome" required/><br/>
                 <label>Estilo:</label><input type="text" name="estilo" required/><br/>
-                <button type="submit">Adicionar</button>
+                <button type="submit" name="artistaController" value="Adicionar">Adicionar</button>
                 <a href="adicionarMusica.php"><button type="button">Cancelar</button></a>
             </form>
             

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once '../config/Database.php';
 require_once '../models/ArtistaDAO.php';
@@ -9,7 +10,7 @@ switch ($_POST['artistaController']) {
         adicionar();
         break;
     default:
-        header("Location: suasMusicas.php");
+        header("Location: ../views/adicionarMusica.php");
 }
 
 function adicionar(){
@@ -20,9 +21,9 @@ function adicionar(){
     
     $artista->setArt_use_cod($_SESSION['use_cod']);
     $artista->setArt_nome($_POST['nome']);
-    $artista->setArt_estilo($_SESSION['estilo']);
+    $artista->setArt_estilo($_POST['estilo']);
     
     $dao->adicionar($artista);
     
-    header("Location: suasMusicas.php");
+    header("Location: ../views/adicionarMusica.php");
 }

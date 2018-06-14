@@ -11,7 +11,7 @@ class ArtistaDAO {
         $nomeArtista = $artista->getArt_nome();
         $sql = "select * from artistas where art_nome='$nomeArtista'";
         
-        $stmt = $this->db->getConnection()->execute($sql);
+        $stmt = $this->db->getConnection()->query($sql);
         
         if ($stmt->rowCount() > 0){
             $found = $stmt->fetch();
@@ -36,25 +36,30 @@ class ArtistaDAO {
         
         $res = $this->buscaArtista($artista);
         
-        if ($res == null) {
-            $art_use_cod = $_SESSION['use_cod'];
-            $art_nome = $artista->getArt_nome();
-            $art_estilo = $artista->getArt_estilo();
+        try {
+            if ($res == null) {
+                $nome = $artista->getArt_nome();
+                $estilo = $artista->getArt_estilo();
+                $useCod = $artista->getArt_use_cod();
+                
+                $query = "INSERT INTO artistas (art_nome, art_estilo, art_use_cod)"
+                        . "VALUES (?, ?, ?)";
             
-            $query = "INSERT INTO artistas (art_nome, art_estilo, art_use_cod)"
-                    . "VALUES (?, ?, ?)";
+                $stmt = $this->db->getConnection()->prepare($query);
+                $stmt->bindParam(1, $nome);
+                $stmt->bindParam(2, $estilo);
+                $stmt->bindParam(3, $useCod);
             
-            $stmt = $this->db->getConnection()->prepare($query);
-            $stmt->bindParam(1, $art_nome);
-            $stmt->bindParam(2, $art_estilo);
-            $stmt->bindParam(3, $art_use_cod);
+                $query = $stmt->execute();
             
-            $query = $stmt->execute();
-            
-            return true;
-        } else {
+                return true;
+            }
+        } catch (PDOException $ex) {
+            echo "Erro ao adicionar artista. ".$ex->getMessage();
             return false;
         }
+        
+        
     }
     
     public function excluir(Artista $artista){
