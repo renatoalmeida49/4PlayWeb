@@ -5,9 +5,6 @@ require_once '../config/Database.php';
 require_once '../models/Playlist.php';
 require_once '../models/PlaylistDAO.php';
 
-$db = new Database();
-$dao = new PlaylistDAO();
-
 switch ($_POST['playlistControl']){
     case "Adicionar":
         adicionar();
@@ -17,6 +14,8 @@ switch ($_POST['playlistControl']){
 }
 
 function adicionar() {
+    $db = new Database();
+    $dao = new PlaylistDAO($db);
     $playlist = new Playlist();
     
     $playlist->setPla_use_cod($_SESSION['use_cod']);

@@ -11,7 +11,7 @@ class PlaylistDAO {
         $nomePlaylist = $playlist->getPla_nome();
         $sql = "select * from playlists where pla_use_cod='{$_SESSION['use_cod']}' and pla_nome='$nomePlaylist'";
         
-        $stmt = $this->db->getConnection()->execute($sql);
+        $stmt = $this->db->getConnection()->query($sql);
         
         if ($stmt->rowCount() > 0){
             $found = $stmt->fetch();
@@ -37,10 +37,14 @@ class PlaylistDAO {
         if ($res == null) {
             $query = "insert into playlists (pla_use_cod, pla_nome, pla_descricao) values (?, ?, ?)";
             
+            $cod = $playlist->getPla_use_cod();
+            $nome = $playlist->getPla_nome();
+            $descricao = $playlist->getPla_descricao();
+            
             $stmt = $this->db->getConnection()->prepare($query);
-            $stmt->bindParam(1, $playlist->getPla_use_cod());
-            $stmt->bindParam(2, $playlist->getPla_nome());
-            $stmt->bindParam(3, $playlist->getPla_descricao());
+            $stmt->bindParam(1, $cod);
+            $stmt->bindParam(2, $nome);
+            $stmt->bindParam(3, $descricao);
             
             $query = $stmt->execute();
             

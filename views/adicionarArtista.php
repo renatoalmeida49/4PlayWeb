@@ -12,16 +12,22 @@ session_start();
     <body>
         <header></header>
         <section>
-            <form method="post" action="../controllers/ArtistaController.php">
-                <label>Nome:</label><input type="text" name="nome" required/><br/>
-                <label>Estilo:</label><input type="text" name="estilo" required/><br/>
-                <button type="submit" name="artistaController" value="Adicionar">Adicionar</button>
-                <a href="adicionarMusica.php"><button type="button">Cancelar</button></a>
-            </form>
-            
-            <table>
-                <!-- Tabela com a consulta no BD dos artistas -->
-            </table>
+            <div class="container">
+                <form method="post" action="../controllers/ArtistaController.php">
+                    <label>Nome:</label><input type="text" name="nome" required/><br/>
+                    <label>Estilo:</label><input type="text" name="estilo" required/><br/>
+                    <button type="submit" name="artistaController" value="Adicionar">Adicionar</button>
+                    <a href="adicionarMusica.php"><button type="button">Cancelar</button></a>
+                </form>
+                
+                <table>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Estilo</td>
+                    </tr>
+                    <?php require_once '../results/TableArtistas.php'; ?>
+                </table>
+            </div>
         </section>
         <footer></footer>
     </body>

@@ -20,6 +20,7 @@ session_start();
                                 <td>Nome</td>
                                 <td>Descrição</td>
                             </tr>
+                            <?php require_once '../results/TablePlaylists.php'; ?>
                         </table>
                     </div>
                     

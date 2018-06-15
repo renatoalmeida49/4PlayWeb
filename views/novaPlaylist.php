@@ -12,7 +12,7 @@
             <div class="container">
                 <form method="post" action="../controllers/PlaylistController.php">
                     <label>Nome:</label><input type="text" required name="nome"/><br/>
-                    <label>Descrição:</label><textarea name="descricao" cols="30" rows="40"></textarea><br/>
+                    <label>Descrição:</label><textarea name="descricao" cols="30" rows="5"></textarea><br/>
                     <button type="submit" name="playlistControl" value="Adicionar">Criar</button>
                 </form>
             </div>
