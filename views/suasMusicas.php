@@ -26,6 +26,7 @@ session_start();
                                 <td>Idioma</td>
                                 <td>Instrumento</td>
                             </tr>
+                            <?php require_once '../results/TableSuasMusicas.php'; ?>
                         </table>
                     </div>
                     

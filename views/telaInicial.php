@@ -22,7 +22,7 @@ session_start();
             <div class="container sec">
                 <div class="topo">
                     <div class="nome">4Play</div>
-                    <div class="hellouser">(user here)</div>
+                    <div class="hellouser"><?php echo "{$_SESSION['use_log']}"?></div>
                 </div>
                 
                 <div class="bot">

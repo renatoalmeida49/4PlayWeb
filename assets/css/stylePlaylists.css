@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    font-family: "Maiandra GD";
+    background-image: url('../images/fundo.jpg');
+    background-size: cover;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}

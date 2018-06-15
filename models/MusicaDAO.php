@@ -18,16 +18,23 @@ class MusicaDAO {
         
             $query = "INSERT INTO musicas (mus_use_cod, mus_art_cod, mus_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra) "
                 . "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        
+            
+            $nome = $musica->getMus_nome();
+            $tipo = $musica->getMus_tipo();
+            $capo = $musica->getMus_capo();
+            $idioma = $musica->getMus_idioma();
+            $instumento = $musica->getMus_instrumento();
+            $letra = $musica->getMus_letra();
+            
             $stmt = $this->db->getConnection()->prepare("INSERT INTO musicas (mus_use_cod, mus_art_cod, mus_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bindParam(1, $_SESSION['use_cod']);
             $stmt->bindParam(2, $codArtista);
-            $stmt->bindParam(3, $musica->getMus_nome());
-            $stmt->bindParam(4, $musica->getMus_tipo());
-            $stmt->bindParam(5, $musica->getMus_capo());
-            $stmt->bindParam(6, $musica->getMus_idioma());
-            $stmt->bindParam(7, $musica->getMus_instrumento());
-            $stmt->bindParam(8, $musica->getMus_letra());
+            $stmt->bindParam(3, $nome);
+            $stmt->bindParam(4, $tipo);
+            $stmt->bindParam(5, $capo);
+            $stmt->bindParam(6, $idioma);
+            $stmt->bindParam(7, $instumento);
+            $stmt->bindParam(8, $letra);
         
             $query = $stmt->execute();
             
@@ -42,7 +49,7 @@ class MusicaDAO {
         $nomeMusica = $musica->getMus_nome();
         $sql = "select * from musicas where mus_nome = '$nomeMusica'";
         
-        $stmt = $this->db->getConnection()->execute($sql);
+        $stmt = $this->db->getConnection()->query($sql);
         
         if($stmt->rowCount() > 0){
             $found = $stmt->fetch();
@@ -72,7 +79,7 @@ class MusicaDAO {
     public function buscarCodArtista($nome, $cod) {
         $query = "select * from artistas where art_nome='{$nome}' and art_use_cod='{$cod}'";
         
-        $stmt = $this->db->getConnection()->execute($query);
+        $stmt = $this->db->getConnection()->query($query);
         
         $found = $stmt->fetch();
         

@@ -21,7 +21,7 @@ function adicionar() {
     
     $musica->setMus_use_cod($_SESSION['use_cod']);
     $musica->setMus_nome($_POST['nome']);
-    $musica->setMus_art_cod(2);
+    $musica->setMus_art_cod($_POST['artista']);
     $musica->setMus_tipo($_POST['tipo']);
     $musica->setMus_capo($_POST['capotraste']);
     $musica->setMus_instrumento($_POST['instrumento']);
