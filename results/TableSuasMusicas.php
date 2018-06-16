@@ -12,11 +12,11 @@ $stmt = $db->getConnection()->query($sql);
 
 while ($row = $stmt->fetch()) {
     echo '<tr>';
-    echo '<td>'.$row['mus_nome'].'</td>';
-    echo '<td>'.$row['art_nome'].'</td>';
-    echo '<td>'.$row['mus_tipo'].'</td>';
-    echo '<td>'.$row['mus_capo'].'</td>';
-    echo '<td>'.$row['mus_idioma'].'</td>';
-    echo '<td>'.$row['mus_instrumento'].'</td>';
+    echo '<td><a href="suasMusicas.php?id='.$row['mus_nome'].'">'.$row['mus_nome'].'</a></td>';
+    echo '<td><a href="suasMusicas.php?id='.$row['mus_nome'].'">'.$row['art_nome'].'</a></td>';
+    echo '<td><a href="suasMusicas.php?id='.$row['mus_nome'].'">'.$row['mus_tipo'].'</a></td>';
+    echo '<td><a href="suasMusicas.php?id='.$row['mus_nome'].'">'.$row['mus_capo'].'</a></td>';
+    echo '<td><a href="suasMusicas.php?id='.$row['mus_nome'].'">'.$row['mus_idioma'].'</a></td>';
+    echo '<td><a href="suasMusicas.php?id='.$row['mus_nome'].'">'.$row['mus_instrumento'].'</a></td>';
     echo '</tr>';
 }

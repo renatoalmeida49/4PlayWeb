@@ -17,17 +17,19 @@ session_start();
             <div class="container">
                 <div class="styleButtons">
                     <div class="tabelaSuasMusicas">
-                        <table>
-                            <tr>
-                                <td>Nome</td>
-                                <td>Artista</td>
-                                <td>Tipo</td>
-                                <td>Capo</td>
-                                <td>Idioma</td>
-                                <td>Instrumento</td>
-                            </tr>
-                            <?php require_once '../results/TableSuasMusicas.php'; ?>
-                        </table>
+                        <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+                            <table>
+                                <tr>
+                                    <td>Nome</td>
+                                    <td>Artista</td>
+                                    <td>Tipo</td>
+                                    <td>Capo</td>
+                                    <td>Idioma</td>
+                                    <td>Instrumento</td>
+                                </tr>
+                                <?php require_once '../results/TableSuasMusicas.php'; ?>
+                            </table>
+                        </form>
                     </div>
                     
                     <div class="buttonFooter">
@@ -37,12 +39,9 @@ session_start();
                             
                 <div class="styleButtons">
                     <div class="infoMusica">
-                        <img src="" height="" width=""/>Nome:<br/>
-                        <img src="../assets/images/artist-icon.png" height="32" width=32/> Artista:<br/>
-                        <img src="../assets/images/type-icon.png" height=32 width="32"/> Tipo:<br/>
-                        <img src="../assets/images/capo-icon.png" height="32" width="32"/> Capo:<br/>
-                        <img src="../assets/images/language-icon.png" height="32" width="32"/> Idioma:<br/>
-                        <img src="../assets/images/instrument-icon.png" height="32" width="32"/> Instrumento:<br/>
+                        <?php if (isset($id)) {
+                            require_once '../results/SelectInfoMusica.php?id=$id';
+                        }?>
                     </div>
                     
                     <div class="buttonFooter">
