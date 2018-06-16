@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Jun-2018 às 21:07
+-- Generation Time: 16-Jun-2018 às 15:48
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -34,19 +34,7 @@ CREATE TABLE IF NOT EXISTS `artistas` (
   PRIMARY KEY (`art_cod`),
   KEY `art_use_cod` (`art_use_cod`),
   KEY `art_use_cod_2` (`art_use_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
-
---
--- Extraindo dados da tabela `artistas`
---
-
-INSERT INTO `artistas` (`art_cod`, `art_use_cod`, `art_nome`, `art_estilo`) VALUES
-(14, 20, 'Bonde do trigrão', 'Funk'),
-(15, 20, 'Metallica', 'Trash Metal'),
-(16, 20, 'Skank', 'Rock'),
-(17, 20, 'Megadeth', 'Trash Metal'),
-(18, 21, 'Guns', 'Heavy metal'),
-(19, 20, 'Alter Bridge', 'Alternative');
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 -- --------------------------------------------------------
 
@@ -67,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `musicas` (
   PRIMARY KEY (`mus_cod`),
   KEY `mus_use_cod` (`mus_use_cod`,`mus_art_cod`),
   KEY `mus_art_cod` (`mus_art_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -95,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `playlists` (
   `pla_descricao` text NOT NULL,
   PRIMARY KEY (`pla_cod`),
   KEY `pla_use_cod` (`pla_use_cod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -110,14 +98,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `use_senha` varchar(30) NOT NULL,
   PRIMARY KEY (`use_cod`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
-
---
--- Extraindo dados da tabela `users`
---
-
-INSERT INTO `users` (`use_cod`, `use_nome`, `use_log`, `use_senha`) VALUES
-(20, 'Renato Novaes', 'novaesr', 'novaesr'),
-(21, 'Renato Novaes', 'renato', 'renato');
 
 --
 -- Constraints for dumped tables
