@@ -4,7 +4,7 @@ require_once '../config/Database.php';
 
 $db = new Database();
 
-$cod = $_SESSION['use_cod'];
+$cod = 20;
 $nome = $_GET['id'];
 
 $sql = "select mus_nome, art_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento from musicas inner join artistas on mus_art_cod = art_cod where mus_use_cod = '".$cod."' and mus_nome='.$nome.' order by mus_nome";

@@ -8,6 +8,23 @@ session_start();
         <link rel="stylesheet" type="text/css" href="../assets/css/styleSuasMusicas.css"/>
         <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
         <title>Suas músicas</title>
+        <script>
+            function preencheDados(art, tipo, capo, lan, ins, letra){
+                var div = document.getElementById("infoMusic");
+                
+                var imgArtist = "<img src='../assets/images/artist-icon.png' height='32' width='32'/>"+art+"<br/>";
+                var imgType = "<img src='../assets/images/type-icon.png' height='32' width='32'/>"+tipo+"<br/>";
+                var imgCapo = "<img src='../assets/images/capo-icon.png' height='32' width='32'/>"+capo+"<br/>";
+                var imgLanguage = "<img src='../assets/images/language-icon.png' height='32' width='32'/>"+lan+"<br/>";
+                var imgInstrument = "<img src='../assets/images/instrument-icon.png' height='32' width='32'/>"+ins+"<br/>" ;
+                
+                div.innerHTML = imgArtist+imgType+imgCapo+imgLanguage+imgInstrument;
+                
+                var divLetra = document.getElementById("letra");
+                
+                divLetra.innerHTML = letra;
+            }
+        </script>
     </head>
     
     <body>
@@ -17,19 +34,17 @@ session_start();
             <div class="container">
                 <div class="styleButtons">
                     <div class="tabelaSuasMusicas">
-                        <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
-                            <table>
-                                <tr>
-                                    <td>Nome</td>
-                                    <td>Artista</td>
-                                    <td>Tipo</td>
-                                    <td>Capo</td>
-                                    <td>Idioma</td>
-                                    <td>Instrumento</td>
-                                </tr>
-                                <?php require_once '../results/TableSuasMusicas.php'; ?>
-                            </table>
-                        </form>
+                        <table>
+                            <tr>
+                                <td>Nome</td>
+                                <td>Artista</td>
+                                <td>Tipo</td>
+                                <td>Capo</td>
+                                <td>Idioma</td>
+                                <td>Instrumento</td>
+                            </tr>
+                            <?php require_once '../results/TableSuasMusicas.php'; ?>
+                        </table>
                     </div>
                     
                     <div class="buttonFooter">
@@ -38,10 +53,8 @@ session_start();
                 </div>
                             
                 <div class="styleButtons">
-                    <div class="infoMusica">
-                        <?php if (isset($id)) {
-                            require_once '../results/SelectInfoMusica.php?id=$id';
-                        }?>
+                    <div class="infoMusica" id="infoMusic">
+                        <!-- A ideia é aqui ser o nome da música --><img src="" height="" width=""/><br/>
                     </div>
                     
                     <div class="buttonFooter">
@@ -50,7 +63,7 @@ session_start();
                 </div>
                 
             
-                <div class="letra">
+                <div class="letra" id='letra'>
                     A letra da música
                 </div>
             </div>
