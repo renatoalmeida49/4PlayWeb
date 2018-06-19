@@ -62,34 +62,29 @@ class ArtistaDAO {
         
     }
     
-    public function excluir(Artista $artista){
-        $res = new Artista();
+    public function excluir($cod){
         
-        $res = $this->buscaArtista($artista);
+        $query = "delete from artistas where art_cod=?";
+            
+        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt->bindParam(1, $cod);
+           
+        $query = $stmt->execute();
         
-        if ($res == null) {
-            return false;
-        } else {
-            $query = "delete from artistas where art_use_cod=? and art_cod=?";
-            
-            $stmt = $this->db->getConnection()->prepare($query);
-            $stmt->bindParam(1, $artista->getArt_use_cod());
-            $stmt->bindParam(2, $artista->getArt_cod());
-            
-            $query = $stmt->execute();
-            
-            return true;
-        }
+        return true;
     }
     
-    public function editar($nomeArtista, Artista $artista) {
-        $query = "update artistas set art_nome=?, art_estilo=? where art_nome=? and art_use_cod=?";
+    public function editar(Artista $artista) {
+        $query = "update artistas set art_nome=?, art_estilo=? where art_cod=?";
         
-        $stmt = $this->db->getConnection()->prepare();
-        $stmt->bindParam(1, $artista->getArt_nome());
-        $stmt->bindParam(2, $artista->getArt_estilo());
-        $stmt->bindParam(3, $nomeArtista);
-        $stmt->bindParam(4, $artista->getArt_use_cod());
+        $nome = $artista->getArt_nome();
+        $estilo = $artista->getArt_estilo();
+        $cod = $artista->getArt_cod();
+        
+        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt->bindParam(1, $nome);
+        $stmt->bindParam(2, $estilo);
+        $stmt->bindParam(3, $cod);
         
         $query = $stmt->execute();
         

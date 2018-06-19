@@ -2,7 +2,7 @@
 
 require_once '../config/Database.php';
 
-function getArray(){
+function getFormEditaMusica(){
     $db = new Database();
 
     $cod = $_GET['id'];
@@ -21,7 +21,22 @@ function getArray(){
     }
 }
 
-function criaForm($nome, $artista, $tipo, $capo, $idioma, $instrumento, $letra){
+function getFormEditaArtista(){
+    $db = new Database();
+
+    $cod = $_GET['id'];
+
+    $sql = "select art_cod, art_nome, art_estilo from artistas where art_cod='$cod'";
+
+    $stmt = $db->getConnection()->query($sql);
     
+    if ($stmt->rowCount() > 0) {
+        $result = $stmt->fetch();
+    
+        return $result;
+        
+    } else {
+        echo 'Não consigo ler nada.';
+    }
 }
 

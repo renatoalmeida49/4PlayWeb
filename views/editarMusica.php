@@ -13,8 +13,8 @@ session_start();
     <body onload=''> 
         <header></header>
         <section>
-            <?php require_once '../results/FormEditaMusica.php';
-                $resultado = getArray();
+            <?php require_once '../results/FormEdicao.php';
+                $resultado = getFormEditaMusica();
             ?>
             <form method='post' action='../controllers/MusicController.php'>
                 <input type='text' hidden name='cod' value='<?php echo $resultado['mus_cod']?>'/>
