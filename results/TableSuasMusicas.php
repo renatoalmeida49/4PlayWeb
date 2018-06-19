@@ -6,14 +6,14 @@ $db = new Database();
 
 $cod = $_SESSION['use_cod'];
 
-$sql = "select mus_nome, art_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra from musicas inner join artistas on mus_art_cod = art_cod where mus_use_cod = '".$cod."' order by mus_nome";
+$sql = "select mus_cod, mus_nome, art_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra from musicas inner join artistas on mus_art_cod = art_cod where mus_use_cod = '".$cod."' order by mus_nome";
 
 $stmt = $db->getConnection()->query($sql);
 
 while ($row = $stmt->fetch()) {
     $artista = $row['art_nome'];
     
-    echo '<tr onclick=\'preencheDados("'.$row['art_nome'].'", "'.$row['mus_tipo'].'", "'.$row['mus_capo'].'", "'.$row['mus_idioma'].'", "'.$row['mus_instrumento'].'", "'.$row['mus_letra'].'")\'>';
+    echo '<tr onclick=\'preencheDados("'.$row['mus_nome'].'", "'.$row['art_nome'].'", "'.$row['mus_tipo'].'", "'.$row['mus_capo'].'", "'.$row['mus_idioma'].'", "'.$row['mus_instrumento'].'", "'.$row['mus_cod'].'")\'>';
     echo '<td>'.$row['mus_nome'].'</td>';
     echo '<td>'.$row['art_nome'].'</td>';
     echo '<td>'.$row['mus_tipo'].'</td>';

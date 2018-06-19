@@ -7,24 +7,8 @@ session_start();
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="../assets/css/styleSuasMusicas.css"/>
         <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
+        <script type="text/javascript" src="../assets/script/script.js"></script>
         <title>Suas músicas</title>
-        <script>
-            function preencheDados(art, tipo, capo, lan, ins, letra){
-                var div = document.getElementById("infoMusic");
-                
-                var imgArtist = "<img src='../assets/images/artist-icon.png' height='32' width='32'/>"+art+"<br/>";
-                var imgType = "<img src='../assets/images/type-icon.png' height='32' width='32'/>"+tipo+"<br/>";
-                var imgCapo = "<img src='../assets/images/capo-icon.png' height='32' width='32'/>"+capo+"<br/>";
-                var imgLanguage = "<img src='../assets/images/language-icon.png' height='32' width='32'/>"+lan+"<br/>";
-                var imgInstrument = "<img src='../assets/images/instrument-icon.png' height='32' width='32'/>"+ins+"<br/>" ;
-                
-                div.innerHTML = imgArtist+imgType+imgCapo+imgLanguage+imgInstrument;
-                
-                var divLetra = document.getElementById("letra");
-                
-                divLetra.innerHTML = letra;
-            }
-        </script>
     </head>
     
     <body>
@@ -54,11 +38,11 @@ session_start();
                             
                 <div class="styleButtons">
                     <div class="infoMusica" id="infoMusic">
-                        <!-- A ideia é aqui ser o nome da música --><img src="" height="" width=""/><br/>
+                        <!-- Essa div será preenchida com dados vindos do JavaScript -->
                     </div>
                     
-                    <div class="buttonFooter">
-                        <a href="editarMusica.php"><button>Editar</button></a>
+                    <div class="buttonFooter" id="buttonFooter">
+                        <!-- Esse será o botão de editar -->
                     </div>
                 </div>
                 

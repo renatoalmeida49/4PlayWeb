@@ -11,7 +11,7 @@ $sql = "select art_nome from artistas where art_use_cod='$cod'";
 
 $stmt = $db->getConnection()->query($sql);
 
-echo "<select name='artista'>";
+echo "<select name='artista' id='artista'>";
 while ($row = $stmt->fetch()){
     echo "<option value='{$row['art_nome']}'>{$row['art_nome']}</option>";
 }
