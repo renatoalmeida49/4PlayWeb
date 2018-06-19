@@ -82,27 +82,43 @@ class MusicaDAO {
         $stmt = $this->db->getConnection()->query($query);
         
         $found = $stmt->fetch();
+        $cod = $found['art_cod'];
         
-        return $found['art_cod'];
+        return $cod;
     }
     
-    public function atualizar(Musica $musica, String $altera){
-        $codArtista = $this->buscarCodArtista($musica->getMus_art_cod(), $musica->getMus_use_cod());
-        $query = "update musicas set mus_art_cod=?, mus_nome=?, mus_capo=?, mus_idioma=?, mus_instrumento=?, mus_letra=? where mus_nome=? and mus_use_cod=?";
+    public function atualizar(Musica $musica){
+        try {
+            $codArtMusica = $musica->getMus_art_cod();
+            $codUsuario = $musica->getMus_use_cod();
+            
+            $codArtista = $this->buscarCodArtista($codArtMusica, $codUsuario);
+            
+            $cod = $musica->getMus_cod();
+            $nome = $musica->getMus_nome();
+            $tipo = $musica->getMus_tipo();
+            $capo = $musica->getMus_capo();
+            $idioma = $musica->getMus_idioma();
+            $instumento = $musica->getMus_instrumento();
+            $letra = $musica->getMus_letra();
         
-        $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->bindParam(1, $codArtista);
-        $stmt->bindParam(2, $musica->getMus_nome());
-        $stmt->bindParam(3, $musica->getMus_capo());
-        $stmt->bindParam(4, $musica->getMus_idioma());
-        $stmt->bindParam(5, $musica->getMus_instrumento());
-        $stmt->bindParam(6, $musica->getMus_letra());
-        $stmt->bindParam(7, $altera);
-        $stmt->bindParam(8, $musica->getMus_use_cod());
+            $query = "UPDATE musicas SET mus_art_cod=?, mus_nome=?, mus_capo=?, mus_idioma=?, mus_instrumento=?, mus_letra=? WHERE mus_cod=?";
         
-        $query = $stmt->execute();
+            $stmt = $this->db->getConnection()->prepare($query);
+            $stmt->bindParam(1, $codArtista);
+            $stmt->bindParam(2, $nome);
+            $stmt->bindParam(3, $capo);
+            $stmt->bindParam(4, $idioma);
+            $stmt->bindParam(5, $instumento);
+            $stmt->bindParam(6, $letra);
+            $stmt->bindParam(7, $cod);
         
-        return true;
+            $query = $stmt->execute();
+        
+            return true;
+        } catch (PDOException $ex) {
+            echo $ex->getMessage();
+        }
     }
     
     public function excluir($musica, $userCod){

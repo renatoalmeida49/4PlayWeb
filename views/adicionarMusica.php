@@ -16,7 +16,15 @@ session_start();
         <section>
             <form method="post" action="../controllers/MusicController.php">
                 <label>Nome:</label><input  required type="text" name="nome"/><br/>
-                <label>Artista:</label><?php require_once '../results/SelectArtistas.php'; ?>
+                <label>Artista:</label>
+                <select name='artista' id='artista'>
+                    <option></option>
+                    <?php 
+                    require_once '../results/SelectArtistas.php'; 
+                    
+                    criaSelect();
+                    ?>
+                </select>
                 <a href="adicionarArtista.php"><button type="button">Novo artista</button></a><br/>
                 <label>Tipo:</label>
                 <select name="tipo" required>

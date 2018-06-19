@@ -9,6 +9,9 @@ switch ($_POST['musicControl']) {
     case 'Adicionar':
         adicionar();
         break;
+    case 'Editar':
+        editar();
+        break;
     default:
         header("Location: ../views/suasmusicas.php");
 }
@@ -31,4 +34,25 @@ function adicionar() {
     $dao->adicionar($musica);
     
     header("Location: ../views/suasmusicas.php");
+}
+
+function editar() {
+    $db = new Database();
+    $dao = new MusicaDAO($db);
+    
+    $musica = new Musica();
+    
+    $musica->setMus_cod($_POST['cod']);
+    $musica->setMus_use_cod($_SESSION['use_cod']);
+    $musica->setMus_nome($_POST['nome']);
+    $musica->setMus_art_cod($_POST['artista']);
+    $musica->setMus_tipo($_POST['tipo']);
+    $musica->setMus_capo($_POST['capotraste']);
+    $musica->setMus_instrumento($_POST['instrumento']);
+    $musica->setMus_idioma($_POST['idioma']);
+    $musica->setMus_letra($_POST['letra']);
+    
+    $dao->atualizar($musica);
+    
+    header("Location: ../views/suasMusicas.php");
 }

@@ -3,18 +3,35 @@
 
 require_once '../config/Database.php';
 
-$db = new Database();
+function criaSelect(){
+    $db = new Database();
+    $cod = $_SESSION['use_cod'];
+    
+    $sql = "select art_nome from artistas where art_use_cod='$cod'";
 
-$cod = $_SESSION['use_cod'];
+    $stmt = $db->getConnection()->query($sql);
 
-$sql = "select art_nome from artistas where art_use_cod='$cod'";
-
-$stmt = $db->getConnection()->query($sql);
-
-echo "<select name='artista' id='artista'>";
-while ($row = $stmt->fetch()){
-    echo "<option value='{$row['art_nome']}'>{$row['art_nome']}</option>";
+    while ($row = $stmt->fetch()){
+        echo "<option value='{$row['art_nome']}'>{$row['art_nome']}</option>";
+    }
 }
-echo "</select>";
+
+function selectEdicao($resultado) {
+    $db = new Database();
+    $cod = $_SESSION['use_cod'];
+    
+    $sql = "select art_nome from artistas where art_use_cod='$cod'";
+
+    $stmt = $db->getConnection()->query($sql);
+
+    while ($row = $stmt->fetch()){
+        if ($resultado['art_nome'] == $row['art_nome']){
+            echo "<option value='{$row['art_nome']}' selected>{$row['art_nome']}</option>";
+        } else {
+            echo "<option value='{$row['art_nome']}'>{$row['art_nome']}</option>";
+        }
+    }
+
+}
 
 ?>

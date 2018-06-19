@@ -14,18 +14,10 @@ function getArray(){
     if ($stmt->rowCount() > 0) {
         $result = $stmt->fetch();
     
-        $nome = $result['mus_nome'];
-        $artista = $result['art_nome'];
-        $tipo = $result['mus_tipo'];
-        $capo = $result['mus_capo'];
-        $idioma = $result['mus_idioma'];
-        $instrumento = $result['mus_instrumento'];
-        $letra = $result['mus_letra'];
-    
         return $result;
         
     } else {
-        echo 'Não consigo ler nada';
+        echo 'Não consigo ler nada.';
     }
 }
 

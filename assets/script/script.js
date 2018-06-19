@@ -27,19 +27,3 @@ function preencheLetra(musica){
     
     div.innerHTML = "";
 }
-
-//Função executada em 'editarMusica.php'
-function preencheCampos(n){
-    var nome = document.getElementById("nome");
-    var artista = document.getElementById("artista");
-    var tipo = document.getElementById("tipo");
-    var capostraste = document.getElementById("capotraste");
-    var instrumento = document.getElementById("instrumeto");
-    var letra = document.getElementById("letra");
-    
-    nome.value = " "+n;
-}
-
-function welcome(){
-    alert("Você chegou")
-}
