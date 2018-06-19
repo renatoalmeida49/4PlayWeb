@@ -173,7 +173,8 @@ session_start();
                 </select><br/>
                 <label>Letra:</label><textarea id="letra" name="letra" rows="30" cols="50"></textarea>
             
-                <button type="submit" name="musicControl" value="Editar">Adicionar</button>
+                <button type="submit" name="musicControl" value="Editar">Atualizar</button>
+                <button type="submit" name="musicControl" value="Excluir">Excluir</button>
             </form>
         </section>
         

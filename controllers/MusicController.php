@@ -12,6 +12,9 @@ switch ($_POST['musicControl']) {
     case 'Editar':
         editar();
         break;
+    case 'Excluir':
+        excluir();
+        break;
     default:
         header("Location: ../views/suasmusicas.php");
 }
@@ -53,6 +56,17 @@ function editar() {
     $musica->setMus_letra($_POST['letra']);
     
     $dao->atualizar($musica);
+    
+    header("Location: ../views/suasMusicas.php");
+}
+
+function excluir() {
+    $db = new Database();
+    $dao = new MusicaDAO($db);
+    
+    $cod = $_POST['cod'];
+    
+    $dao->excluir($cod);
     
     header("Location: ../views/suasMusicas.php");
 }

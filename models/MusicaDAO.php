@@ -121,12 +121,11 @@ class MusicaDAO {
         }
     }
     
-    public function excluir($musica, $userCod){
-        $query = "delete from musicas where mus_nome=? and mus_use_cod=?";
+    public function excluir($cod){
+        $query = "delete from musicas where mus_cod=?";
         
         $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->bindParam(1, $musica);
-        $stmt->bindParam(2, $userCod);
+        $stmt->bindParam(1, $cod);
         
         $query = $stmt->execute();
         
