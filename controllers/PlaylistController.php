@@ -9,6 +9,9 @@ switch ($_POST['playlistControl']){
     case "Adicionar":
         adicionar();
         break;
+    case "Excluir":
+        excluir();
+        break;
     default:
         header("Location: ../views/Playlists.php");
 }
@@ -25,4 +28,8 @@ function adicionar() {
     $dao->adicionar($playlist);
     
     header("Location: ../views/Playlists.php");
+}
+
+function excluir() {
+    
 }

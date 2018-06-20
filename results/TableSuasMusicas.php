@@ -2,6 +2,9 @@
 
 require_once '../config/Database.php';
 
+function suasMusicas(){
+    
+
 $db = new Database();
 
 $cod = $_SESSION['use_cod'];
@@ -21,4 +24,9 @@ while ($row = $stmt->fetch()) {
     echo '<td>'.$row['mus_idioma'].'</td>';
     echo '<td>'.$row['mus_instrumento'].'</td>';
     echo '</tr>';
+}
+}
+
+function suasMusicasPlaylist(){
+    
 }

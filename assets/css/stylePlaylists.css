@@ -12,10 +12,25 @@ section {
 }
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1500px;
 }
 
 footer {
     display: flex;
     justify-content: center;
+}
+
+.buttonFooter {
+    display: flex;
+    justify-content: center;
+}
+
+.tablePlaylists{
+    background-color: white;
+}
+
+.tableMusicasPlaylist {
+    background-color: white;
 }

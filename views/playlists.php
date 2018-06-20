@@ -7,6 +7,7 @@ session_start();
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
         <link rel="stylesheet" type="text/css" href="../assets/css/stylePlaylists.css"/>
+        <script type="text/javascript" src="../assets/script/script.js"></script>
         <title>Playlists</title>
     </head>
     <body>
@@ -14,23 +15,24 @@ session_start();
         <section>
             <div class="container">
                 <div class="styleButtons">
-                    <div class="">
+                    <div class="tablePlaylists">
                         <table>
                             <tr>
                                 <td>Nome</td>
                                 <td>Descrição</td>
                             </tr>
-                            <?php require_once '../results/TablePlaylists.php'; ?>
+                            <?php require_once '../results/TablePlaylist.php'; 
+                            tablePlaylists();?>
                         </table>
                     </div>
                     
-                    <div class="">
+                    <div class="buttonFooter">
                         <a href="novaPlaylist.php"><button type="button">Nova playlist</button></a>
                     </div>
                 </div>
                 
                 <div class="styleButtons">
-                    <div class="">
+                    <div class="tableMusicasPlaylist">
                         <table>
                             <tr>
                                 <td>Nome</td>
@@ -41,8 +43,8 @@ session_start();
                         </table>
                     </div>
                     
-                    <div class="">
-                        <a href="telaInicial.php"><button type="button">Editar playlist</button></a>
+                    <div class="buttonFooter" id="buttonFooter">
+                        <!-- Esse será o botão de editar -->
                     </div>
                 </div>
             </div>
