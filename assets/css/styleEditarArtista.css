@@ -1,26 +1,21 @@
 body {
-    margin: 0;
+    margin: 0px;
     font-family: "Maiandra GD";
     background-image: url('../images/fundo.jpg');
     background-size: cover;
 }
 
 header {
-   display: flex;
-   justify-content: center;
-   margin-top: 20px;
-   margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .nome {
     justify-content: center;
     text-align: center;
     line-height: 50px;
-}
-
-label {
-    display: inline-block;
-    width: 350px;
 }
 
 section {
@@ -33,23 +28,20 @@ section {
     justify-content: center;
 }
 
-.labelLetra, .areaLetra {
-    display: block;
+label {
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 5px;
 }
 
-button {
-    border-radius: 5px;
-    height: 20px;
-}
-
-label, select, input {
+input {
     margin-bottom: 5px;
 }
 
 .buttonForm {
-    display: flex;
-    justify-content: center;
     margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .buttonFooterForm {
@@ -60,5 +52,5 @@ label, select, input {
 }
 
 footer {
-    margin-top: 30px;
+    margin-top: 20px;
 }

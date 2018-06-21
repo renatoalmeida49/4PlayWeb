@@ -1,0 +1,97 @@
+body {
+    margin: 0;
+    font-family: "Maiandra GD";
+    background-image: url('../images/fundo.jpg');
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nome {
+    justify-content: center;
+    text-align: center;
+    line-height: 50px;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.table {
+    background-color: white;
+    margin-top: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+.colunas {
+    background-color: #2efe64;
+}
+
+tr, td {
+  padding-left: 2px;  
+  border: 1px solid black;
+}
+
+.tabelaArtistas {
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+label {
+    display: inline-block;
+    width: 350px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 300px;
+    margin-bottom: 5px;
+}
+
+.buttonForm {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttonFooterForm {
+    border-radius: 5px;
+    height: 30px;
+    font-size: 18px;
+    width: 140px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}

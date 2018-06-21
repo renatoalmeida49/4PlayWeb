@@ -12,14 +12,23 @@ session_start();
     </head>
     
     <body>
-        <header></header>
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" width="40" height="40"/>
+                </div>
+                <div class="nome">
+                    4Play
+                </div>
+            </div>
+        </header>
         
         <section>
             <div class="container">
                 <div class="styleButtons">
                     <div class="tabelaSuasMusicas">
-                        <table>
-                            <tr>
+                        <table class="tabelaMusicas">
+                            <tr class="colunas">
                                 <td>Nome</td>
                                 <td>Artista</td>
                                 <td>Tipo</td>
@@ -27,8 +36,10 @@ session_start();
                                 <td>Idioma</td>
                                 <td>Instrumento</td>
                             </tr>
-                            <?php require_once '../results/TableSuasMusicas.php'; 
-                            suasMusicas();?>
+                            <?php 
+                                require_once '../results/TableSuasMusicas.php'; 
+                                suasMusicas();
+                            ?>
                         </table>
                     </div>
                     
@@ -49,7 +60,7 @@ session_start();
                 
             
                 <div class="letra" id='letra'>
-                    A letra da música
+                    <!-- Essa div será preenchida de alguma forma que não sei como -->
                 </div>
             </div>
         </section>

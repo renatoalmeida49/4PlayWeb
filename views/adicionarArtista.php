@@ -10,25 +10,45 @@ session_start();
         <title>Adicionar artista</title>
     </head>
     <body>
-        <header></header>
-        <section>
+        <header>
             <div class="container">
-                <form method="post" action="../controllers/ArtistaController.php">
-                    <label>Nome:</label><input type="text" name="nome" required/><br/>
-                    <label>Estilo:</label><input type="text" name="estilo" required/><br/>
-                    <button type="submit" name="artistaController" value="Adicionar">Adicionar</button>
-                    <a href="adicionarMusica.php"><button type="button">Cancelar</button></a>
-                </form>
+                <div class="logo">
+                    <img src="../assets/images/logo.png" width="40" height="40"/>
+                </div>
+                <div class="nome">
+                    4Play
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container column">
+                <div class="form">
+                    <form method="post" action="../controllers/ArtistaController.php">
+                        <label>Nome:</label><input type="text" name="nome" required/><br/>
+                        <label>Estilo:</label><input type="text" name="estilo" required/><br/>
+                        
+                        <div class="buttonForm">
+                            <button type="submit" class="buttonFooterForm" name="artistaController" value="Adicionar">Adicionar</button>
+                            <a href="adicionarMusica.php"><button type="button" class="buttonFooterForm">Cancelar</button></a>
+                        </div>
+                    </form>
+                </div>
                 
-                <table>
-                    <tr>
-                        <td>Nome</td>
-                        <td>Estilo</td>
-                    </tr>
-                    <?php require_once '../results/TableArtistas.php'; ?>
-                </table>
+                <div class="table">
+                    <table class="tabelaArtistas">
+                        <tr class="colunas">
+                            <td>Nome</td>
+                            <td>Estilo</td>
+                        </tr>
+                        <?php require_once '../results/TableArtistas.php'; ?>
+                    </table>
+                </div>
             </div>
         </section>
-        <footer></footer>
+        <footer>
+            <div class="container">
+                Selecione um artista na tabela para editar ou excluir.
+            </div>
+        </footer>
     </body>
 </html>
