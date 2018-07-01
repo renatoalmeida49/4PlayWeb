@@ -11,13 +11,22 @@ session_start();
         <title>Playlists</title>
     </head>
     <body>
-        <header></header>
-        <section>
+        <header>
             <div class="container">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" width="40" height="40"/>
+                </div>
+                <div class="nome">
+                    4Play
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container sec">
                 <div class="styleButtons">
                     <div class="tablePlaylists">
-                        <table>
-                            <tr>
+                        <table class="tableConfig">
+                            <tr class="colunas">
                                 <td>Nome</td>
                                 <td>Descrição</td>
                             </tr>
@@ -33,8 +42,8 @@ session_start();
                 
                 <div class="styleButtons">
                     <div class="tableMusicasPlaylist">
-                        <table>
-                            <tr>
+                        <table class="tableConfig">
+                            <tr class="colunas">
                                 <td>Nome</td>
                                 <td>Artista</td>
                                 <td>Instrumento</td>

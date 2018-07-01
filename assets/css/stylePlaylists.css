@@ -5,6 +5,19 @@ body {
     background-size: cover;
 }
 
+header{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nome {
+    justify-content: center;
+    text-align: center;
+    line-height: 50px;
+}
+
 section {
     display: flex;
     justify-content: center;
@@ -12,9 +25,14 @@ section {
 }
 .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
     max-width: 1500px;
+}
+
+.sec {
+    display: flex;
+    justify-content: space-around;
 }
 
 footer {
@@ -29,8 +47,32 @@ footer {
 
 .tablePlaylists{
     background-color: white;
+    min-width: 250px;
+    margin-bottom: 50px;
 }
 
 .tableMusicasPlaylist {
     background-color: white;
+    margin-bottom: 50px;
+}
+
+.colunas {
+    background-color: #2efe64;
+}
+
+.tableConfig{
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 100%;
+}
+
+tr td {
+  padding-left: 2px;  
+  border: 1px solid black;
+}
+
+button {
+    border-radius: 5px;
+    height: 30px;
+    font-size: 18px;
 }

@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: "Maiandra-GD";
+    background-image: url('../images/fundo.jpg');
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1500px;
+    flex-direction: row;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    border-radius: 5px;
+    height: 30px;
+    font-size: 18px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.opcoes {
+    margin: 10px;
+}
+
+.sec {
+    display: flex;
+    justify-content: space-between;
+}

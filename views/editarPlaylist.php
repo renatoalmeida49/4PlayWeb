@@ -6,13 +6,22 @@ session_start();
     <head>
         <meta charset="UTF-8">
         <link rel='icon' type="image/png" href="../assets/images/logo.png"/>
-        <link rel='stylesheet' type="text/css" href="..assets/css/styleEditaPlaylist.php"/>
+        <link rel='stylesheet' type="text/css" href="../assets/css/styleEditarPlaylist.css"/>
         <title>Editar playlist</title>
     </head>
     <body>
-        <header></header>
-        <section>
+        <header>
             <div class="container">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" width="40" height="40"/>
+                </div>
+                <div class="nome">
+                    4Play
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container sec">
                 <div class="styleTable">
                     <!-- Todas as músicas do usuário com exceção das que já estão na playlist -->
                     <div class="tabelaSuasMusicas">
@@ -23,10 +32,10 @@ session_start();
                                 <td>Instrumento</td>
                                 <td>Idioma</td>
                             </tr>
-                            <!-- <?php
+                            <?php
                                 //require_once '../results/TablePlaylist.php';
                                 //suasMusicasForaDaPlaylist($_GET['id']);
-                            ?> -->
+                            ?>
                         </table>
                     </div>
                     <div class="buttonFooter">
@@ -35,9 +44,9 @@ session_start();
                 </div>
                 
                 <div class="botoes">
-                    <button type="button">Adicionar ></button>
-                    <button type="button">< Remover</button>
-                    <button type="button">Excluir playlist</button>
+                    <button class="opcoes" type="button">Adicionar ></button>
+                    <button class="opcoes" type="button">< Remover</button>
+                    <button class="opcoes" type="button">Excluir playlist</button>
                 </div>
                 
                 <!-- Somente as músicas da playlist -->
@@ -51,8 +60,8 @@ session_start();
                         </tr>
                         
                         <?php 
-                            require_once '../results/TablePlaylist.php';
-                            selecionaMusicaPlaylist($_GET['id']);
+                            //require_once '../results/TablePlaylist.php';
+                            //selecionaMusicaPlaylist($_GET['id']);
                         ?>
                     </table>
                 </div>
