@@ -7,13 +7,24 @@
         <title>Nova playlist</title>
     </head>
     <body>
-        <header></header>
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" width="40" height="40"/>
+                </div>
+                <div class="nome">
+                    4Play
+                </div>
+            </div>
+        </header>
         <section>
             <div class="container">
                 <form method="post" action="../controllers/PlaylistController.php">
                     <label>Nome:</label><input type="text" required name="nome"/><br/>
-                    <label>Descrição:</label><textarea name="descricao" cols="30" rows="5"></textarea><br/>
-                    <button type="submit" name="playlistControl" value="Adicionar">Criar</button>
+                    <label class="labelLetra">Descrição:</label><br/><textarea class="areaLetra" name="descricao" cols="50" rows="5"></textarea><br/>
+                    <div class="buttonFooterForm">
+                        <button type="submit" name="playlistControl" value="Adicionar">Criar</button>
+                    </div>
                 </form>
             </div>
         </section>
