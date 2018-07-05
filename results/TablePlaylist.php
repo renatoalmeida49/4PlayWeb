@@ -24,17 +24,17 @@ function tablePlaylists(){
 function selecionaMusicaPlaylist($cod) {
     $db = new Database();
     
-    $query = "select mus_nome, art_nome, mus_instrumento, mus_idioma from musicasPlaylist".
+    $query = "select mus_nome, art_nome, mus_instrumento, mus_idioma from musicasPlaylists\n".
                     "inner join musicas on mpl_mus_cod = mus_cod \n".
                     "inner join artistas on mus_art_cod = art_cod\n".
-                    "where mpl_pla_cod='?' order by mus_nome";
+                    "where mpl_pla_cod='".$cod."' order by mus_nome";
     
-    $stmt = $db->getConnection()->prepare($query);
-    $stmt->bindParam(1, $cod);
+    $stmt = $db->getConnection()->query($query);
+    //$stmt->bindParam(1, $cod);
     
-    $result = $stmt->execute();
+    //$result = $stmt->execute();
     
-    while ($row = $result->fetch()){
+    while ($row = $stmt->fetch()){
         echo '<tr>';
         echo '<td>'.$row['mus_nome'].'</td>';
         echo '<td>'.$row['art_nome'].'</td>';
@@ -44,55 +44,65 @@ function selecionaMusicaPlaylist($cod) {
     }
 }
 
-//tabela das músicas do usuário sem as músicas já dá playlist em 'editarPlaylist.php'
+//array das músicas do usuário na playlist em 'editarPlaylist.php'
 function suasMusicasForaDaPlaylist($codPlaylist){
     $db = new Database();
     $cod = $_SESSION['use_cod'];
     
+    $nomesMusicas = array();
     
     // AQUI EU TENHO TODAS AS MÚSICAS DA PLAYLIST
-    $query = "select mus_nome, art_nome, mus_instrumento, mus_idioma from musicasPlaylist".
-                    "inner join musicas on mpl_mus_cod = mus_cod \n".
-                    "inner join artistas on mus_art_cod = art_cod\n".
-                    "where mpl_pla_cod='?' order by mus_nome";
+    $sql = "select mus_nome from musicasPlaylists inner join musicas on mpl_mus_cod = mus_cod where mpl_pla_cod='".$codPlaylist."'";
     
-    $stmt = $db->getConnection()->prepare($query);
-    $stmt->bindParam(1, $codPlaylist);
+    $stmt = $db->getConnection()->query($sql);
+    //$stmt->bindParam(1, $codPlaylist);
     
-    $result = $stmt->execute();
+    //$result = $stmt->execute();
     
-    $nomesDasMusicas = array();
-    
-    if ($result->rowCount() > 0) {
-         while ($row = $result->fetch()){
-            $nomesDasMusicas[] = $row['mus_nome'];
+    try {
+        while ($row = $stmt->fetch()){
+            $nomesMusicas[] = $row['mus_nome'];
         }
-    
-        var_dump($nomesDasMusicas);
-    } else {
-        echo 'Nenhum registro encontrado.';
+    } catch (Exception $ex) {
+        echo 'Nenhum registro retornado.';
     }
     
-   
-    /////////////////////////////////////////////////////////////
     
-    // AGORA EU TENHO TODAS AS MUSICAS DO USUÁRIO
+    return $nomesMusicas;
     
-    /*
-    $query2 = "select mus_nome, art_nome, mus_instrumento, mus_idioma from musicas inner join artistas on mus_art_cod = art_cod where mus_use_cod = '?' order by mus_nome";
+}
+
+//preenche tabelas só com as músicas do usuário
+//que não estão na playlist
+function verificaMusicas($codPlaylist){
+    $db = new Database();
+    $cod = $_SESSION['use_cod'];
     
-    $stmt2 = $db->getConnection()->prepare($query2);
-    $stmt2->bindParam(1, $cod);
+    $nomesMusicas = array();
+    $nomesMusicas = suasMusicasForaDaPlaylist($codPlaylist);
     
-    $result2 = $stmt2->execute();
+    $sql = "select mus_cod, mus_nome, art_nome, mus_instrumento, mus_idioma from musicas\n".
+                    "inner join artistas on mus_art_cod = art_cod\n".
+                    "where mus_use_cod='".$cod."' order by mus_nome";
     
-    $arrayDeResultado = array();
+    $stmt = $db->getConnection()->query($sql);
+    //$stmt->bindParam(1, $cod);
     
-    while ($row2 = $result2->fetch()) {
-        if (!(in_array($row2['mus_nome'], $nomesDasMusicas))){
-            $arrayDeResultado[] = $row2;
+    //$result = $stmt->execute();
+    
+    while ($row = $stmt->fetch()) {
+        $verificador = $row['mus_nome'];
+        
+        if (!(in_array($verificador, $nomesMusicas))){
+            
+            echo '<tr id="'.$row['mus_cod'].'" onclick=\'pegaId('.$row['mus_cod'].')\'>';
+            echo '<td>'.$row['mus_nome'].'</td>';
+            echo '<td>'.$row['art_nome'].'</td>';
+            echo '<td>'.$row['mus_instrumento'].'</td>';
+            echo '<td>'.$row['mus_idioma'].'</td>';
+            echo '</tr>';
         }
-    }*/
+    }
     
 }
 

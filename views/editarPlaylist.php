@@ -7,6 +7,7 @@ session_start();
         <meta charset="UTF-8">
         <link rel='icon' type="image/png" href="../assets/images/logo.png"/>
         <link rel='stylesheet' type="text/css" href="../assets/css/styleEditarPlaylist.css"/>
+        <script type="text/javascript" src="../assets/script/script.js"></script>
         <title>Editar playlist</title>
     </head>
     <body>
@@ -33,8 +34,8 @@ session_start();
                                 <td>Idioma</td>
                             </tr>
                             <?php
-                                //require_once '../results/TablePlaylist.php';
-                                //suasMusicasForaDaPlaylist($_GET['id']);
+                                require_once '../results/TablePlaylist.php';
+                                verificaMusicas($_GET['id']);
                             ?>
                         </table>
                     </div>
@@ -60,13 +61,16 @@ session_start();
                         </tr>
                         
                         <?php 
-                            //require_once '../results/TablePlaylist.php';
-                            //selecionaMusicaPlaylist($_GET['id']);
+                            require_once '../results/TablePlaylist.php';
+                            selecionaMusicaPlaylist($_GET['id']);
                         ?>
                     </table>
                 </div>
             </div>
         </section>
+        
+        <input type="text" id="inputId" name="inputID" >
+        
         <footer>
             <div class="botao">
                 <a href="playlists.php"><button type="button">Voltar</button></a>
