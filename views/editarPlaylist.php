@@ -26,8 +26,8 @@ session_start();
                 <div class="styleTable">
                     <!-- Todas as músicas do usuário com exceção das que já estão na playlist -->
                     <div class="tabelaSuasMusicas">
-                        <table>
-                            <tr>
+                        <table class="tableConfig">
+                            <tr class="colunas">
                                 <td>Nome</td>
                                 <td>Artista</td>
                                 <td>Instrumento</td>
@@ -52,8 +52,8 @@ session_start();
                 
                 <!-- Somente as músicas da playlist -->
                 <div class="tabelaMusicasPlaylists">
-                    <table>
-                        <tr>
+                    <table class="tableConfig">
+                        <tr class="colunas">
                             <td>Nome</td>
                             <td>Artista</td>
                             <td>Instrumento</td>
@@ -69,7 +69,7 @@ session_start();
             </div>
         </section>
         
-        <input type="text" id="inputId" name="inputID" >
+        <input type="text" id="inputId" name="inputID" hidden>
         
         <footer>
             <div class="botao">

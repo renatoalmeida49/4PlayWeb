@@ -95,7 +95,7 @@ function verificaMusicas($codPlaylist){
         
         if (!(in_array($verificador, $nomesMusicas))){
             
-            echo '<tr id="'.$row['mus_cod'].'" onclick=\'pegaId('.$row['mus_cod'].')\'>';
+            echo '<tr class=\'teste\' id="'.$row['mus_cod'].'" onclick=\'pegaId('.$row['mus_cod'].')\'>';
             echo '<td>'.$row['mus_nome'].'</td>';
             echo '<td>'.$row['art_nome'].'</td>';
             echo '<td>'.$row['mus_instrumento'].'</td>';

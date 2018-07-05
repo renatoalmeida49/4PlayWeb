@@ -55,3 +55,30 @@ button {
     display: flex;
     justify-content: space-between;
 }
+
+.tableConfig{
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.colunas {
+    background-color: #2efe64;
+}
+
+tr td {
+  padding-left: 2px;  
+  border: 1px solid black;
+}
+
+.tabelaSuasMusicas {
+    background-color: white;
+    min-width: 250px;
+    margin-bottom: 50px;
+}
+
+.tabelaMusicasPlaylists {
+    background-color: white;
+    min-width: 250px;
+    margin-bottom: 50px;
+}

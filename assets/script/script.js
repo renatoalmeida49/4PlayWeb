@@ -38,12 +38,16 @@ function preencheTabelaMusicasPlaylists(cod){
 }
 
 //função executada em 'editarPlaylist.php' para preencher input escondido com id de musica
+//e deixa a linha na cor vermelha.
 function pegaId(cod) {
-    
-    var campo = document.getElementById("inputId");
-    var linha = document.getElementById(cod);
-    
+    var campo = document.getElementById("inputId");//isso é o input
     campo.value = cod;
-    linha.style.background = "red";
     
+    var classes = document.getElementsByClassName('teste');
+    var linha = document.getElementById(cod);//isso é a linha
+    
+    for (i=0; i <= classes.length; i++){
+        classes[i].style.background = 'white';
+        linha.style.background = "#81F79F";
+    }   
 }
