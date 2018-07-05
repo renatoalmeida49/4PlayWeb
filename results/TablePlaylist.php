@@ -13,8 +13,8 @@ function tablePlaylists(){
     $stmt = $db->getConnection()->query($sql);
 
     while ($row = $stmt->fetch()){
-        echo '<tr onclick=\'preencheTabelaMusicasPlaylists("'.$row['pla_cod'].'")\'>';
-        echo '<td>'.$row['pla_nome'].'</td>';
+        echo '<tr>';
+        echo '<td><a href="playlists.php?id='.$row['pla_cod'].'">'.$row['pla_nome'].'</a></td>';
         echo '<td>'.$row['pla_descricao'].'</td>';
         echo '</tr>';
     }
@@ -103,6 +103,29 @@ function verificaMusicas($codPlaylist){
             echo '</tr>';
         }
     }
+}
+
+//tabela em 'playlist.php' das músicas da playlist
+function musicasPlaylist($cod) {
+    $db = new Database();
     
+    $query = "select mus_nome, art_nome, mus_instrumento, mus_idioma from musicasPlaylists\n".
+                    "inner join musicas on mpl_mus_cod = mus_cod \n".
+                    "inner join artistas on mus_art_cod = art_cod\n".
+                    "where mpl_pla_cod='".$cod."' order by mus_nome";
+    
+    $stmt = $db->getConnection()->query($query);
+    //$stmt->bindParam(1, $cod);
+    
+    //$result = $stmt->execute();
+    
+    while ($row = $stmt->fetch()){
+        echo '<tr>';
+        echo '<td>'.$row['mus_nome'].'</td>';
+        echo '<td>'.$row['art_nome'].'</td>';
+        echo '<td>'.$row['mus_instrumento'].'</td>';
+        echo '<td>'.$row['mus_idioma'].'</td>';
+        echo '</tr>';
+    }
 }
 

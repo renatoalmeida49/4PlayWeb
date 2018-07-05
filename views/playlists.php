@@ -41,19 +41,29 @@ session_start();
                 </div>
                 
                 <div class="styleButtons">
-                    <div class="tableMusicasPlaylist">
-                        <table class="tableConfig">
+                    <div class="tableMusicasPlaylist" >
+                        <table class="tableConfig" id='tableMusicasPlaylist'>
                             <tr class="colunas">
                                 <td>Nome</td>
                                 <td>Artista</td>
                                 <td>Instrumento</td>
                                 <td>Idioma</td>
                             </tr>
+                            <?php
+                            if (isset($_GET['id'])){
+                                require_once '../results/TablePlaylist.php';
+                                musicasPlaylist($_GET['id']);
+                            }
+                            ?>
                         </table>
                     </div>
                     
                     <div class="buttonFooter" id="buttonFooter">
-                        <!-- Esse será o botão de editar -->
+                        <?php
+                        if (isset($_GET['id'])){
+                            echo '<a href="editarPlaylist.php?id='.$_GET['id'].'"><button>Editar</button></a>';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

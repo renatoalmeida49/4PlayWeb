@@ -7,7 +7,7 @@ function criaSelect(){
     $db = new Database();
     $cod = $_SESSION['use_cod'];
     
-    $sql = "select art_nome from artistas where art_use_cod='$cod'";
+    $sql = "select art_nome from artistas where art_use_cod='$cod' order by art_nome";
 
     $stmt = $db->getConnection()->query($sql);
 

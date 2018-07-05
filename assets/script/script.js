@@ -28,15 +28,6 @@ function preencheLetra(musica){
     div.innerHTML = "";
 }
 
-//Função executada em 'playlists.php' com o clique do mouse
-function preencheTabelaMusicasPlaylists(cod){
-    var divB = document.getElementById("buttonFooter");
-    
-    botao = "<a href='editarPlaylist.php?id="+cod+"'><button>Editar</button></a>";
-    
-    divB.innerHTML = botao;
-}
-
 //função executada em 'editarPlaylist.php' para preencher input escondido com id de musica
 //e deixa a linha na cor vermelha.
 function pegaId(cod) {
