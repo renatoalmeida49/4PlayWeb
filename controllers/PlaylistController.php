@@ -12,6 +12,12 @@ switch ($_POST['playlistControl']){
     case "Excluir":
         excluir();
         break;
+    case "AdicionarMusica":
+        adicionarMusica();
+        break;
+    case "RemoverMusica":
+        removerMusica();
+        break;
     default:
         header("Location: ../views/Playlists.php");
 }
@@ -31,5 +37,35 @@ function adicionar() {
 }
 
 function excluir() {
+    $db = new Database();
+    $dao = new PlaylistDAO($db);
+    $playlist = new Playlist();
     
+    $playlist->setPla_cod($_POST['playlistID']);
+    
+    $dao->excluir($playlist);
+    
+    header("Location: ../views/Playlists.php");
+}
+
+function adicionarMusica() {
+    $db = new Database();
+    $dao = new PlaylistDAO($db);
+    
+    $dao->adicionarMusicaAPlaylist($_POST['playlistID'], $_POST['musicaID']);
+    
+    $location = "Location: ../views/editarplaylist.php?id=".$_POST['playlistID'];
+    
+    header($location);
+}
+
+function removerMusica() {
+    $db = new Database();
+    $dao = new PlaylistDAO($db);
+    
+    $dao->removerMusicaDaPlaylist($_POST['playlistID'], $_POST['musicaID']);
+    
+    $location = "Location: ../views/editarplaylist.php?id=".$_POST['playlistID'];
+    
+    header($location);
 }

@@ -55,11 +55,37 @@ class PlaylistDAO {
     }
     
     public function excluir(Playlist $playlist) {
-        $query = "delete from playlists where pla_use_cod='?' and pla_cod='?'";
+        $query = "delete from playlists where pla_cod=?";
+        
+        $plaCod = $playlist->getPla_cod();
         
         $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->bindParam(1, $playlist->getPla_use_cod());
-        $stmt->bindParam(2, $playlist->getPla_cod());
+        $stmt->bindParam(1, $plaCod);
+        
+        $query = $stmt->execute();
+        
+        return true;
+    }
+    
+    public function adicionarMusicaAPlaylist($codPlaylist, $codMusica) {
+        $query = "insert into musicasplaylists (mpl_pla_cod, mpl_mus_cod) values (?, ?)";
+        
+        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt->bindParam(1, $codPlaylist);
+        $stmt->bindParam(2, $codMusica);
+        
+        $query = $stmt->execute();
+        
+        return true;   
+    }
+    
+    public function removerMusicaDaPlaylist($codPlaylist, $codMusica) {
+        $query = "delete from musicasPlaylists where mpl_pla_cod=? and mpl_mus_cod=?";
+        
+        $stmt = $this->db->getConnection()->prepare($query);
+        
+        $stmt->bindParam(1, $codPlaylist);
+        $stmt->bindParam(2, $codMusica);
         
         $query = $stmt->execute();
         

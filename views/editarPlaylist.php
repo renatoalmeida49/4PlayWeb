@@ -45,9 +45,13 @@ session_start();
                 </div>
                 
                 <div class="botoes">
-                    <button class="opcoes" type="button">Adicionar ></button>
-                    <button class="opcoes" type="button">< Remover</button>
-                    <button class="opcoes" type="button">Excluir playlist</button>
+                    <form method="post" class="botoes" action="../controllers/PlaylistController.php">
+                        <button class="opcoes" type="submit" name="playlistControl" value="AdicionarMusica">Adicionar ></button>
+                        <button class="opcoes" type="submit" name="playlistControl" value="RemoverMusica">< Remover</button>
+                        <button class="opcoes" type="submit" name="playlistControl" value="Excluir">Excluir playlist</button>
+                        <input type="text" id="inputId" name="musicaID"  hidden required >
+                        <input type="text" name="playlistID" value="<?php echo $_GET['id']?>" hidden>
+                    </form>
                 </div>
                 
                 <!-- Somente as músicas da playlist -->
@@ -68,8 +72,6 @@ session_start();
                 </div>
             </div>
         </section>
-        
-        <input type="text" id="inputId" name="inputID" hidden>
         
         <footer>
             <div class="botao">

@@ -24,7 +24,7 @@ function tablePlaylists(){
 function selecionaMusicaPlaylist($cod) {
     $db = new Database();
     
-    $query = "select mus_nome, art_nome, mus_instrumento, mus_idioma from musicasPlaylists\n".
+    $query = "select mus_cod, mus_nome, art_nome, mus_instrumento, mus_idioma from musicasPlaylists\n".
                     "inner join musicas on mpl_mus_cod = mus_cod \n".
                     "inner join artistas on mus_art_cod = art_cod\n".
                     "where mpl_pla_cod='".$cod."' order by mus_nome";
@@ -35,7 +35,7 @@ function selecionaMusicaPlaylist($cod) {
     //$result = $stmt->execute();
     
     while ($row = $stmt->fetch()){
-        echo '<tr>';
+        echo '<tr class=\'teste\' id="'.$row['mus_cod'].'" onclick=\'pegaId('.$row['mus_cod'].')\'>';
         echo '<td>'.$row['mus_nome'].'</td>';
         echo '<td>'.$row['art_nome'].'</td>';
         echo '<td>'.$row['mus_instrumento'].'</td>';
