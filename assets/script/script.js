@@ -15,6 +15,13 @@ function preencheDados(nome, art, tipo, capo, lan, ins, cod) {
     div.innerHTML = nomeMusica+imgArtist+imgType+imgCapo+imgLanguage+imgInstrument;
     divB.innerHTML = botao;
     
+    var classes = document.getElementsByClassName('teste');
+    var linha = document.getElementById(cod);//isso é a linha
+    
+    for (i=0; i <= classes.length; i++){
+        classes[i].style.background = 'white';
+        linha.style.background = "#81F79F";
+    }
     
     preencheLetra(nome);
 }
@@ -41,4 +48,15 @@ function pegaId(cod) {
         classes[i].style.background = 'white';
         linha.style.background = "#81F79F";
     }   
+}
+
+//função executa em 'playlists.php'
+function selecionaLinha(cod) {
+    var classes = document.getElementsByClassName('teste');
+    var linha = document.getElementById(cod);//isso é a linha
+    
+    for (i=0; i <= classes.length; i++){
+        classes[i].style.background = 'white';
+        linha.style.background = "#81F79F";
+    }
 }

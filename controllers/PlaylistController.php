@@ -41,6 +41,8 @@ function excluir() {
     $dao = new PlaylistDAO($db);
     $playlist = new Playlist();
     
+    echo 'Tô na função';
+    
     $playlist->setPla_cod($_POST['playlistID']);
     
     $dao->excluir($playlist);

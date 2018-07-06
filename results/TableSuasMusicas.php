@@ -16,7 +16,7 @@ $stmt = $db->getConnection()->query($sql);
 while ($row = $stmt->fetch()) {
     $artista = $row['art_nome'];
     
-    echo '<tr onclick=\'preencheDados("'.$row['mus_nome'].'", "'.$row['art_nome'].'", "'.$row['mus_tipo'].'", "'.$row['mus_capo'].'", "'.$row['mus_idioma'].'", "'.$row['mus_instrumento'].'", "'.$row['mus_cod'].'")\'>';
+    echo '<tr class=\'teste\' id="'.$row['mus_cod'].'" onclick=\'preencheDados("'.$row['mus_nome'].'", "'.$row['art_nome'].'", "'.$row['mus_tipo'].'", "'.$row['mus_capo'].'", "'.$row['mus_idioma'].'", "'.$row['mus_instrumento'].'", "'.$row['mus_cod'].'")\'>';
     echo '<td>'.$row['mus_nome'].'</td>';
     echo '<td>'.$row['art_nome'].'</td>';
     echo '<td>'.$row['mus_tipo'].'</td>';

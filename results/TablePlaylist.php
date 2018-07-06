@@ -13,7 +13,7 @@ function tablePlaylists(){
     $stmt = $db->getConnection()->query($sql);
 
     while ($row = $stmt->fetch()){
-        echo '<tr>';
+        echo '<tr class=\'teste\' id="'.$row['pla_cod'].' onclick=\'selecionaLinha('.$row['pla_cod'].')\'">';
         echo '<td><a href="playlists.php?id='.$row['pla_cod'].'">'.$row['pla_nome'].'</a></td>';
         echo '<td>'.$row['pla_descricao'].'</td>';
         echo '</tr>';

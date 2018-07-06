@@ -49,7 +49,7 @@ session_start();
                         <button class="opcoes" type="submit" name="playlistControl" value="AdicionarMusica">Adicionar ></button>
                         <button class="opcoes" type="submit" name="playlistControl" value="RemoverMusica">< Remover</button>
                         <button class="opcoes" type="submit" name="playlistControl" value="Excluir">Excluir playlist</button>
-                        <input type="text" id="inputId" name="musicaID"  hidden required >
+                        <input type="text" id="inputId" name="musicaID"   hidden >
                         <input type="text" name="playlistID" value="<?php echo $_GET['id']?>" hidden>
                     </form>
                 </div>
