@@ -7,27 +7,35 @@ class ArtistaDAO {
         $this->db = $db;
     }
     
-    public function buscaArtista(Artista $artista){
-        $nomeArtista = $artista->getArt_nome();
-        $sql = "select * from artistas where art_nome='$nomeArtista'";
+    //Função executada apenas para verificar se o artista a ser adicionado já existe no banco
+    protected function buscaArtista(Artista $artista){
+        try {
+            $nomeArtista = $artista->getArt_nome();
+            $sql = "select * from artistas where art_nome=?";
         
-        $stmt = $this->db->getConnection()->query($sql);
+            $stmt = $this->db->getConnection()->prepare($sql);
+            $stmt->bindParam(1, $nomeArtista);
+            $stmt->execute();
         
-        if ($stmt->rowCount() > 0){
-            $found = $stmt->fetch();
+            if ($stmt->rowCount() > 0){
+                $found = $stmt->fetch();
             
-            if ($found['art_use_cod'] == $artista->getArt_use_cod()) {
-                $artistaFound = new Artista();
+                if ($found['art_use_cod'] == $artista->getArt_use_cod()) {
+                    $artistaFound = new Artista();
                 
-                $artistaFound->setArt_cod($found['art_cod']);
-                $artistaFound->setArt_use_cod($found['art_use_cod']);
-                $artistaFound->setArt_nome($found['art_nome']);
-                $artistaFound->setArt_estilo($found['art_estilo']);
+                    $artistaFound->setArt_cod($found['art_cod']);
+                    $artistaFound->setArt_use_cod($found['art_use_cod']);
+                    $artistaFound->setArt_nome($found['art_nome']);
+                    $artistaFound->setArt_estilo($found['art_estilo']);
                 
-                return $artistaFound;
+                    return $artistaFound;
+                }
+            } else {
+                return null;
             }
-        } else {
-            return null;
+        } catch (Exception $ex) {
+            echo 'Falha ao buscar artista. '.$ex->getMessage();
+            return false;
         }
     }
     
@@ -57,38 +65,44 @@ class ArtistaDAO {
         } catch (PDOException $ex) {
             echo "Erro ao adicionar artista. ".$ex->getMessage();
             return false;
-        }
-        
-        
+        } 
     }
     
     public function excluir($cod){
-        
-        $query = "delete from artistas where art_cod=?";
+        try {
+            $query = "delete from artistas where art_cod=?";
             
-        $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->bindParam(1, $cod);
+            $stmt = $this->db->getConnection()->prepare($query);
+            $stmt->bindParam(1, $cod);
            
-        $query = $stmt->execute();
+            $query = $stmt->execute();
         
-        return true;
+            return true;
+        } catch (Exception $ex) {
+            echo 'Falha ao excluir artista. '.$ex->getMessage();
+            return false;
+        } 
     }
     
     public function editar(Artista $artista) {
-        $query = "update artistas set art_nome=?, art_estilo=? where art_cod=?";
+        try {
+            $query = "update artistas set art_nome=?, art_estilo=? where art_cod=?";
         
-        $nome = $artista->getArt_nome();
-        $estilo = $artista->getArt_estilo();
-        $cod = $artista->getArt_cod();
+            $nome = $artista->getArt_nome();
+            $estilo = $artista->getArt_estilo();
+            $cod = $artista->getArt_cod();
         
-        $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->bindParam(1, $nome);
-        $stmt->bindParam(2, $estilo);
-        $stmt->bindParam(3, $cod);
+            $stmt = $this->db->getConnection()->prepare($query);
+            $stmt->bindParam(1, $nome);
+            $stmt->bindParam(2, $estilo);
+            $stmt->bindParam(3, $cod);
         
-        $query = $stmt->execute();
+            $query = $stmt->execute();
         
-        return true;
+            return true;
+        } catch (Exception $ex) {
+            echo 'Falha ao editar artista. '.$ex->getMessage();
+            return false;
+        }
     }
-    
 }

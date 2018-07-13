@@ -70,7 +70,9 @@ function excluir() {
     
     $cod = $_POST['cod'];
     
-    $dao->excluir($cod);
-    
-    header("Location: ../views/suasMusicas.php");
+    if ($dao->excluir($cod)) {
+        header("Location: ../views/suasMusicas.php");
+    } else {
+        echo 'Falha ao excluir música.';
+    }
 }

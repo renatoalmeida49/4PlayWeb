@@ -50,52 +50,62 @@ class MusicaDAO {
     
     //Função executada para verificar se música já existe no banco
     protected function buscarMusica(Musica $musica){
-        $nomeMusica = $musica->getMus_nome();
+        try {
+            $nomeMusica = $musica->getMus_nome();
         
-        $sql = "select * from musicas where mus_nome=?";
+            $sql = "select * from musicas where mus_nome=?";
         
-        $stmt = $this->db->getConnection()->prepare($sql);
-        $stmt->bindParam(1, $nomeMusica);
+            $stmt = $this->db->getConnection()->prepare($sql);
+            $stmt->bindParam(1, $nomeMusica);
         
-        $stmt->execute();
+            $stmt->execute();
         
-        if($stmt->rowCount() > 0){
-            $found = $stmt->fetch();
+            if($stmt->rowCount() > 0){
+                $found = $stmt->fetch();
             
-            if ($found['mus_use_cod'] == $musica->getMus_use_cod()) {
-                $musicaFound = new Musica();
+                if ($found['mus_use_cod'] == $musica->getMus_use_cod()) {
+                    $musicaFound = new Musica();
                 
-                $musicaFound->setMus_cod($found['mus_cod']);
-                $musicaFound->setMus_use_cod($found['mus_use_cod']);
-                $musicaFound->setMus_nome($found['mus_nome']);
-                $musicaFound->setMus_art_cod($found['mus_art_cod']);
-                $musicaFound->setMus_tipo($found['mus_tipo']);
-                $musicaFound->setMus_capo($found['mus_capo']);
-                $musicaFound->setMus_idioma($found['mus_idioma']);
-                $musicaFound->setMus_instrumento($found['mus_instrumento']);
-                $musicaFound->setMus_letra($found['mus_letra']);
+                    $musicaFound->setMus_cod($found['mus_cod']);
+                    $musicaFound->setMus_use_cod($found['mus_use_cod']);
+                    $musicaFound->setMus_nome($found['mus_nome']);
+                    $musicaFound->setMus_art_cod($found['mus_art_cod']);
+                    $musicaFound->setMus_tipo($found['mus_tipo']);
+                    $musicaFound->setMus_capo($found['mus_capo']);
+                    $musicaFound->setMus_idioma($found['mus_idioma']);
+                    $musicaFound->setMus_instrumento($found['mus_instrumento']);
+                    $musicaFound->setMus_letra($found['mus_letra']);
                 
-                return $musicaFound;
+                    return $musicaFound;
+                }
+            } else {
+                return null;
             }
-        } else {
-            return null;
+        } catch (Exception $ex) {
+            echo 'Falha ao buscar música. '.$ex->getMessage();
         }
+        
     }
     
     //Essa função existe porque o programa lhe dá uma String para artista
     //e a tabela músicas aceita apenas int para artista
     protected function buscarCodArtista($nome, $cod) {
-        $query = "select * from artistas where art_nome=? and art_use_cod=?";
+        try {
+            $query = "select * from artistas where art_nome=? and art_use_cod=?";
         
-        $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->bindParam(1, $nome);
-        $stmt->bindParam(2, $cod);
-        $stmt->execute();
+            $stmt = $this->db->getConnection()->prepare($query);
+            $stmt->bindParam(1, $nome);
+            $stmt->bindParam(2, $cod);
+            $stmt->execute();
         
-        $found = $stmt->fetch();
-        $cod = $found['art_cod'];
+            $found = $stmt->fetch();
+            $cod = $found['art_cod'];
         
-        return $cod;
+            return $cod;
+        } catch (Exception $ex) {
+            echo 'Falha ao buscar código de artista. '.$ex->getMessage();
+        }
+        
     }
     
     public function editar(Musica $musica){
