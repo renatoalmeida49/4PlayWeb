@@ -61,6 +61,7 @@ session_start();
             
                 <div class="letra" id='letra'>
                     <!-- Essa div será preenchida de alguma forma que não sei como -->
+                    <!-- 13/07/2018 Refatorando - Ainda não sei como resolver -->
                 </div>
             </div>
         </section>

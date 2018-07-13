@@ -34,9 +34,11 @@ function adicionar() {
     $musica->setMus_idioma($_POST['idioma']);
     $musica->setMus_letra($_POST['letra']);
     
-    $dao->adicionar($musica);
-    
-    header("Location: ../views/suasmusicas.php");
+    if ($dao->adicionar($musica)) {
+        header("Location: ../views/suasmusicas.php");
+    } else {
+        echo 'Falha ao adicionar música.';
+    }
 }
 
 function editar() {
@@ -55,9 +57,11 @@ function editar() {
     $musica->setMus_idioma($_POST['idioma']);
     $musica->setMus_letra($_POST['letra']);
     
-    $dao->atualizar($musica);
-    
-    header("Location: ../views/suasMusicas.php");
+    if ($dao->editar($musica)) {
+        header("Location: ../views/suasMusicas.php");
+    } else {
+        echo 'Falha ao editar música.';
+    }
 }
 
 function excluir() {

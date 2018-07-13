@@ -23,10 +23,10 @@ session_start();
             <div class="container">
                 <div class="formulario">
                     <form method="post" action="../controllers/UserController.php">
-                        <label>Nome:</label><input type="text" name="nome"/><br/>
-                        <label>Login:</label><input type="text" name="login"/><br/>
-                        <label>Senha:</label><input type="password" size="32" name="senha"/><br/>
-                        <label>Repita senha:</label><input type="password" size="32" name="confSenha"/><br/>
+                        <label>Nome:</label><input required type="text" name="nome"/><br/>
+                        <label>Login:</label><input required type="text" name="login"/><br/>
+                        <label>Senha:</label><input required type="password" size="32" name="senha"/><br/>
+                        <label>Repita senha:</label><input required type="password" size="32" name="confSenha"/><br/>
                             
                         <div class="footerform">
                             <div class="buttons">

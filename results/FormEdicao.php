@@ -7,15 +7,16 @@ function getFormEditaMusica(){
 
     $cod = $_GET['id'];
 
-    $sql = "select mus_cod, mus_nome, art_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra from musicas inner join artistas on mus_art_cod = art_cod where mus_cod='$cod'";
+    $sql = "select mus_cod, mus_nome, art_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra from musicas inner join artistas on mus_art_cod = art_cod where mus_cod=?";
 
-    $stmt = $db->getConnection()->query($sql);
+    $stmt = $db->getConnection()->prepare($sql);
+    $stmt->bindParam(1, $cod);
+    $stmt->execute();
     
     if ($stmt->rowCount() > 0) {
         $result = $stmt->fetch();
     
         return $result;
-        
     } else {
         echo 'Não consigo ler nada.';
     }
@@ -26,15 +27,16 @@ function getFormEditaArtista(){
 
     $cod = $_GET['id'];
 
-    $sql = "select art_cod, art_nome, art_estilo from artistas where art_cod='$cod'";
+    $sql = "select art_cod, art_nome, art_estilo from artistas where art_cod=?";
 
-    $stmt = $db->getConnection()->query($sql);
+    $stmt = $db->getConnection()->prepare($sql);
+    $stmt->bindParam(1, $cod);
+    $stmt->execute();
     
     if ($stmt->rowCount() > 0) {
         $result = $stmt->fetch();
     
         return $result;
-        
     } else {
         echo 'Não consigo ler nada.';
     }

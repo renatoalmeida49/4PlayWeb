@@ -41,9 +41,13 @@ function acessar() {
     $login = $_POST['login'];
     $senha = $_POST['senha'];
     
-    $query = "select * from users where use_log='$login' and use_senha='$senha'";
+    $query = "select * from users where use_log=? and use_senha=?";
     
-    $stmt = $db->getConnection()->query($query);
+    $stmt = $db->getConnection()->prepare($query);
+    $stmt->bindParam(1, $login);
+    $stmt->bindParam(2, $senha);
+    
+    $stmt->execute();
     
     if ($stmt->rowCount() > 0 ) {
 

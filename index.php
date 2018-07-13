@@ -27,7 +27,7 @@ session_start();
                 
                 <div class="formulario">
                     <form method="post" action="controllers/UserController.php">
-                        <label>Login:</label><input required type="text" name="login"/></br>
+                        <label>Login:</label><input autofocus required type="text" name="login"/></br>
                         <label>Senha:</label><input required type="password" size="32" name="senha"/></br>
                         
                         <div class="footerform">

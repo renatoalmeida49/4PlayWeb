@@ -8,48 +8,56 @@ class MusicaDAO {
     }
     
     public function adicionar(Musica $musica){
-        $res = new Musica();
+        try {
+            $res = new Musica();
         
-        $res = $this->buscarMusica($musica);
+            $res = $this->buscarMusica($musica);
         
-        if ($res == null) {
+            if ($res == null) {
             
-            $codArtista = $this->buscarCodArtista($musica->getMus_art_cod(), $musica->getMus_use_cod());
+                $codArtista = $this->buscarCodArtista($musica->getMus_art_cod(), $musica->getMus_use_cod());
         
-            $query = "INSERT INTO musicas (mus_use_cod, mus_art_cod, mus_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra) "
-                . "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                $query = "INSERT INTO musicas (mus_use_cod, mus_art_cod, mus_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra) "
+                    . "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             
-            $nome = $musica->getMus_nome();
-            $tipo = $musica->getMus_tipo();
-            $capo = $musica->getMus_capo();
-            $idioma = $musica->getMus_idioma();
-            $instumento = $musica->getMus_instrumento();
-            $letra = $musica->getMus_letra();
+                $nome = $musica->getMus_nome();
+                $tipo = $musica->getMus_tipo();
+                $capo = $musica->getMus_capo();
+                $idioma = $musica->getMus_idioma();
+                $instumento = $musica->getMus_instrumento();
+                $letra = $musica->getMus_letra();
             
-            $stmt = $this->db->getConnection()->prepare("INSERT INTO musicas (mus_use_cod, mus_art_cod, mus_nome, mus_tipo, mus_capo, mus_idioma, mus_instrumento, mus_letra) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bindParam(1, $_SESSION['use_cod']);
-            $stmt->bindParam(2, $codArtista);
-            $stmt->bindParam(3, $nome);
-            $stmt->bindParam(4, $tipo);
-            $stmt->bindParam(5, $capo);
-            $stmt->bindParam(6, $idioma);
-            $stmt->bindParam(7, $instumento);
-            $stmt->bindParam(8, $letra);
+                $stmt = $this->db->getConnection()->prepare($query);
+                $stmt->bindParam(1, $_SESSION['use_cod']);
+                $stmt->bindParam(2, $codArtista);
+                $stmt->bindParam(3, $nome);
+                $stmt->bindParam(4, $tipo);
+                $stmt->bindParam(5, $capo);
+                $stmt->bindParam(6, $idioma);
+                $stmt->bindParam(7, $instumento);
+                $stmt->bindParam(8, $letra);
         
-            $query = $stmt->execute();
+                $query = $stmt->execute();
             
-            return true;
-        } else {
-            return false;
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $ex) {
+            echo 'Falha ao adicionar música. '.$ex->getMessage();
         }
-        
     }
     
-    public function buscarMusica(Musica $musica){
+    //Função executada para verificar se música já existe no banco
+    protected function buscarMusica(Musica $musica){
         $nomeMusica = $musica->getMus_nome();
-        $sql = "select * from musicas where mus_nome = '$nomeMusica'";
         
-        $stmt = $this->db->getConnection()->query($sql);
+        $sql = "select * from musicas where mus_nome=?";
+        
+        $stmt = $this->db->getConnection()->prepare($sql);
+        $stmt->bindParam(1, $nomeMusica);
+        
+        $stmt->execute();
         
         if($stmt->rowCount() > 0){
             $found = $stmt->fetch();
@@ -74,12 +82,15 @@ class MusicaDAO {
         }
     }
     
-    //Essa função existe porque o programa lhe dar uma String para artista
+    //Essa função existe porque o programa lhe dá uma String para artista
     //e a tabela músicas aceita apenas int para artista
-    public function buscarCodArtista($nome, $cod) {
-        $query = "select * from artistas where art_nome='{$nome}' and art_use_cod='{$cod}'";
+    protected function buscarCodArtista($nome, $cod) {
+        $query = "select * from artistas where art_nome=? and art_use_cod=?";
         
-        $stmt = $this->db->getConnection()->query($query);
+        $stmt = $this->db->getConnection()->prepare($query);
+        $stmt->bindParam(1, $nome);
+        $stmt->bindParam(2, $cod);
+        $stmt->execute();
         
         $found = $stmt->fetch();
         $cod = $found['art_cod'];
@@ -87,7 +98,7 @@ class MusicaDAO {
         return $cod;
     }
     
-    public function atualizar(Musica $musica){
+    public function editar(Musica $musica){
         try {
             $codArtMusica = $musica->getMus_art_cod();
             $codUsuario = $musica->getMus_use_cod();
@@ -117,19 +128,25 @@ class MusicaDAO {
         
             return true;
         } catch (PDOException $ex) {
-            echo $ex->getMessage();
+            echo 'Falha ao editar música. '.$ex->getMessage();
+            return false;
         }
     }
     
     public function excluir($cod){
-        $query = "delete from musicas where mus_cod=?";
+        try {
+            $query = "delete from musicas where mus_cod=?";
         
-        $stmt = $this->db->getConnection()->prepare($query);
-        $stmt->bindParam(1, $cod);
+            $stmt = $this->db->getConnection()->prepare($query);
+            $stmt->bindParam(1, $cod);
         
-        $query = $stmt->execute();
+            $query = $stmt->execute();
         
-        return true;
+            return true;
+        } catch (Exception $ex) {
+            echo 'Falha ao excluir música. '.$ex->getMessage();
+            return false;
+        }
     }
     
     public function seleciona($cod) {

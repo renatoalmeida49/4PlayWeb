@@ -26,7 +26,7 @@ session_start();
                 <form method="post" action="../controllers/MusicController.php">
                     <label>Nome:</label><input  required type="text" name="nome"/><br/>
                     <label>Artista:</label>
-                    <select name='artista' id='artista'>
+                    <select name='artista' id='artista' required>
                         <option></option>
                         <?php 
                             require_once '../results/SelectArtistas.php'; 

@@ -40,7 +40,9 @@ session_start();
                             <td>Nome</td>
                             <td>Estilo</td>
                         </tr>
-                        <?php require_once '../results/TableArtistas.php'; ?>
+                        <?php require_once '../results/TableArtistas.php'; 
+                            tableSeusArtistas();
+                        ?>
                     </table>
                 </div>
             </div>

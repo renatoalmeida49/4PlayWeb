@@ -15,12 +15,12 @@ function preencheDados(nome, art, tipo, capo, lan, ins, cod) {
     div.innerHTML = nomeMusica+imgArtist+imgType+imgCapo+imgLanguage+imgInstrument;
     divB.innerHTML = botao;
     
-    var classes = document.getElementsByClassName('teste');
-    var linha = document.getElementById(cod);//isso é a linha
+    var classes = document.getElementsByClassName('teste');//pega todas as minhas da tabela
+    var linha = document.getElementById(cod);//isso é a linha selecionada
     
     for (i=0; i <= classes.length; i++){
-        classes[i].style.background = 'white';
-        linha.style.background = "#81F79F";
+        classes[i].style.background = 'white';//pinta todas as linhas de branco da tabela
+        linha.style.background = "#81F79F";//pinta a linha da música de verde
     }
     
     preencheLetra(nome);

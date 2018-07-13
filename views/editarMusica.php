@@ -10,7 +10,7 @@ session_start();
         <title>Editar música</title>
         <script type="text/javascript" src="../assets/script/script.js"></script>
     </head>
-    <body onload=''> 
+    <body> 
         <header>
             <div class="container">
                 <div class="logo">
@@ -30,10 +30,10 @@ session_start();
                     <input type='text' hidden name='cod' value='<?php echo $resultado['mus_cod']?>'/>
                     <label>Nome:</label><input required type="text" name="nome" value='<?php echo $resultado['mus_nome']; ?>'/><br/>
                     <label>Artista:</label>
-                    <select name='artista' id='artista'>
+                    <select name='artista' id='artista' required>
                         <?php 
                         require_once '../results/SelectArtistas.php';
-                        selectEdicao($resultado);
+                            selectEdicao($resultado);
                         ?>
                     </select>
                     <a href="adicionarArtista.php"><button type="button">Novo artista</button></a><br/>
@@ -139,19 +139,19 @@ session_start();
                     <select name="instrumento" required>
                         <option></option>
                         <?php
-                        if ($resultado['mus_instrumento'] == "Violão"){
-                            echo '<option value="Violão" selected>Violão</option>';
-                            echo '<option value="Guitarra">Guitarra</option>';
-                            echo '<option value="Violão/Guitarra">Violão/Guitarra</option>';
-                        } else if ($resultado['mus_instrumento'] == "Guitarra") {
-                            echo '<option value="Violão">Violão</option>';
-                            echo '<option value="Guitarra" selected>Guitarra</option>';
-                            echo '<option value="Violão/Guitarra">Violão/Guitarra</option>';
-                        } else {
-                            echo '<option value="Violão" selected>Violão</option>';
-                            echo '<option value="Guitarra">Guitarra</option>';
-                            echo '<option value="Violão/Guitarra"selected>Violão/Guitarra</option>';
-                        }
+                            if ($resultado['mus_instrumento'] == "Violão"){
+                                echo '<option value="Violão" selected>Violão</option>';
+                                echo '<option value="Guitarra">Guitarra</option>';
+                                echo '<option value="Violão/Guitarra">Violão/Guitarra</option>';
+                            } else if ($resultado['mus_instrumento'] == "Guitarra") {
+                                echo '<option value="Violão">Violão</option>';
+                                echo '<option value="Guitarra" selected>Guitarra</option>';
+                                echo '<option value="Violão/Guitarra">Violão/Guitarra</option>';
+                            } else {
+                                echo '<option value="Violão" selected>Violão</option>';
+                                echo '<option value="Guitarra">Guitarra</option>';
+                                echo '<option value="Violão/Guitarra"selected>Violão/Guitarra</option>';
+                            }
                         ?>
                     </select><br/>
                     <label>Idioma:</label>

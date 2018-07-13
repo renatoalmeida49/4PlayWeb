@@ -7,9 +7,11 @@ function criaSelect(){
     $db = new Database();
     $cod = $_SESSION['use_cod'];
     
-    $sql = "select art_nome from artistas where art_use_cod='$cod' order by art_nome";
+    $sql = "select art_nome from artistas where art_use_cod=? order by art_nome";
 
-    $stmt = $db->getConnection()->query($sql);
+    $stmt = $db->getConnection()->prepare($sql);
+    $stmt->bindParam(1, $cod);
+    $stmt->execute();
 
     while ($row = $stmt->fetch()){
         echo "<option value='{$row['art_nome']}'>{$row['art_nome']}</option>";
@@ -20,9 +22,11 @@ function selectEdicao($resultado) {
     $db = new Database();
     $cod = $_SESSION['use_cod'];
     
-    $sql = "select art_nome from artistas where art_use_cod='$cod'";
+    $sql = "select art_nome from artistas where art_use_cod=?";
 
-    $stmt = $db->getConnection()->query($sql);
+    $stmt = $db->getConnection()->prepare($sql);
+    $stmt->bindParam(1, $cod);
+    $stmt->execute();
 
     while ($row = $stmt->fetch()){
         if ($resultado['art_nome'] == $row['art_nome']){
