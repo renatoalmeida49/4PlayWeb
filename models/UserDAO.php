@@ -23,7 +23,7 @@ class UserDAO {
             
             return true;
         } catch (Exception $ex) {
-            echo 'Falha ao adicionar usuário';
+            echo 'Falha ao adicionar usuário '.$ex->getMessage();
             return false;
         }
         
