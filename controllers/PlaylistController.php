@@ -31,9 +31,11 @@ function adicionar() {
     $playlist->setPla_nome($_POST['nome']);
     $playlist->setPla_descricao($_POST['descricao']);
     
-    $dao->adicionar($playlist);
-    
-    header("Location: ../views/Playlists.php");
+    if ($dao->adicionar($playlist)) {
+        header("Location: ../views/Playlists.php");
+    } else {
+        echo 'Falha ao adicionar playlist.';
+    }
 }
 
 function excluir() {
@@ -45,29 +47,35 @@ function excluir() {
     
     $playlist->setPla_cod($_POST['playlistID']);
     
-    $dao->excluir($playlist);
-    
-    header("Location: ../views/Playlists.php");
+    if ($dao->excluir($playlist)) {
+        header("Location: ../views/Playlists.php");
+    } else {
+        echo 'Falha ao excluir playlist.';
+    }
 }
 
 function adicionarMusica() {
     $db = new Database();
     $dao = new PlaylistDAO($db);
     
-    $dao->adicionarMusicaAPlaylist($_POST['playlistID'], $_POST['musicaID']);
+    if ($dao->adicionarMusicaAPlaylist($_POST['playlistID'], $_POST['musicaID'])) {
+        $location = "Location: ../views/editarplaylist.php?id=".$_POST['playlistID'];
     
-    $location = "Location: ../views/editarplaylist.php?id=".$_POST['playlistID'];
-    
-    header($location);
+        header($location);
+    } else {
+        echo 'Falha ao adicionar música a playlist.';
+    }
 }
 
 function removerMusica() {
     $db = new Database();
     $dao = new PlaylistDAO($db);
     
-    $dao->removerMusicaDaPlaylist($_POST['playlistID'], $_POST['musicaID']);
+    if ($dao->removerMusicaDaPlaylist($_POST['playlistID'], $_POST['musicaID'])) {
+        $location = "Location: ../views/editarplaylist.php?id=".$_POST['playlistID'];
     
-    $location = "Location: ../views/editarplaylist.php?id=".$_POST['playlistID'];
-    
-    header($location);
+        header($location);
+    } else {
+        echo 'Falha ao remover playlist.';
+    }
 }

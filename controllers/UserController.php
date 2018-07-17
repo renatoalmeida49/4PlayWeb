@@ -30,9 +30,11 @@ function adicionar() {
     $user->setLogin($login);
     $user->setSenha($senha);
 
-    $dao->adicionar($user);
-    
-    header("Location: ../index.php");
+    if ($dao->adicionar($user)) {
+        header("Location: ../index.php");
+    } else {
+        echo 'Falha ao adicionar usuário';
+    }
 }
 
 function acessar() {

@@ -29,9 +29,11 @@ function adicionar(){
     $artista->setArt_nome($_POST['nome']);
     $artista->setArt_estilo($_POST['estilo']);
     
-    $dao->adicionar($artista);
-    
-    header("Location: ../views/adicionarMusica.php");
+    if ($dao->adicionar($artista)) {
+        header("Location: ../views/adicionarMusica.php");
+    } else {
+        echo 'Falha ao adicionar artista';
+    }
 }
 
 function atualizar(){
@@ -47,9 +49,11 @@ function atualizar(){
     $artista->setArt_estilo($_POST['estilo']);
     $artista->setArt_use_cod($_SESSION['use_cod']);
     
-    $dao->editar($artista);
-    
-    header("Location: ../views/adicionarMusica.php");
+    if ($dao->editar($artista)) {
+        header("Location: ../views/adicionarMusica.php");
+    } else {
+        echo 'Falha ao editar artista.';
+    }
 }
 
 function excluir(){
@@ -58,7 +62,9 @@ function excluir(){
     
     $cod = $_POST['cod'];
     
-    $dao->excluir($cod);
-    
-    header("Location: ../views/adicionarMusica.php");
+    if ($dao->excluir($cod)) {
+        header("Location: ../views/adicionarMusica.php");
+    } else {
+        echo 'Falha ao excluir artista';
+    }
 }
