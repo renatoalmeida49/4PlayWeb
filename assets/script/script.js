@@ -10,18 +10,18 @@ function preencheDados(nome, art, tipo, capo, lan, ins, cod) {
     var imgLanguage = "<img src='../assets/images/language-icon.png' height='32' width='32'/>"+lan+"<br/>";
     var imgInstrument = "<img src='../assets/images/instrument-icon.png' height='32' width='32'/>"+ins+"<br/>" ;
     
-    var botao = "<a href='editarMusica.php?id="+cod+"'><button>Editar</button></a>";
+    var botao = "<a href='editarMusica.php?id="+cod+"' class='btn btn-success'>Editar</a>";
                 
     div.innerHTML = nomeMusica+imgArtist+imgType+imgCapo+imgLanguage+imgInstrument;
     divB.innerHTML = botao;
     
-    var classes = document.getElementsByClassName('teste');//pega todas as minhas da tabela
+    /*var classes = document.getElementsByClassName('teste');//pega todas as minhas da tabela
     var linha = document.getElementById(cod);//isso é a linha selecionada
     
     for (i=0; i <= classes.length; i++){
         classes[i].style.background = 'white';//pinta todas as linhas de branco da tabela
         linha.style.background = "#81F79F";//pinta a linha da música de verde
-    }
+    }*/
     
     preencheLetra(nome);
 }
@@ -50,7 +50,7 @@ function pegaId(cod) {
     }   
 }
 
-//função executa em 'playlists.php'
+//função executada em 'playlists.php'
 function selecionaLinha(cod) {
     var classes = document.getElementsByClassName('teste');
     var linha = document.getElementById(cod);//isso é a linha

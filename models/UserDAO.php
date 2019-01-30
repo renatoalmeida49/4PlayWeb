@@ -12,7 +12,7 @@ class UserDAO {
             $login = $user->getLogin();
             $senha = $user->getSenha();
         
-            $query = "INSERT INTO users (nome, login, senha) VALUES (?, ?, ?)";
+            $query = "INSERT INTO users (use_nome, use_log, use_senha) VALUES (?, ?, ?)";
         
             $stmt = $this->db->getConnection()->prepare($query);
             $stmt->bindParam(1, $nome);

@@ -3,8 +3,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no" />
         <link rel="icon" type="image/png" href='../assets/images/logo.png'/>
         <link rel="stylesheet" type="text/css" href='../assets/css/styleEditarArtista.css'/>
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
         <title>Editar artista</title>
     </head>
     <body>
