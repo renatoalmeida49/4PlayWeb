@@ -23,10 +23,15 @@ session_start();
                 </div>
             </div>
         
-            <div class="row justify-content-center">
-                <form method="post" action="../controllers/MusicController.php">
-                    <div class="form-group">
-                        <label for="nome">Nome:</label><input id="nome" class="form-control" required type="text" name="nome"/><br/>
+            <form method="post" action="../controllers/MusicController.php">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="nome">Nome:</label><input id="nome" class="form-control" required type="text" name="nome"/>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
                         <label for="artista">Artista:</label>
                         <select name='artista' class="form-control" id='artista' required>
                             <option></option>
@@ -36,14 +41,24 @@ session_start();
                                 criaSelect();
                             ?>
                         </select>
-                        <a href="adicionarArtista.php" style="margin-top: 10px" class="btn btn-success">Novo artista</a><br/>
+                    </div>
+                    <div class="col">
+                        <a href="adicionarArtista.php" style="margin-top: 31px" class="btn btn-success form-control">Novo artista</a>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col">
                         <label for="tipo">Tipo:</label>
                         <select id="tipo" class="form-control" name="tipo" required>
                             <option></option>
                             <option value="Dedilhado">Dedilhado</option>
                             <option value="Ritmo">Ritmo</option>
                             <option value="Mista">Mista</option>
-                        </select></br>
+                        </select>
+                    </div>
+
+                    <div class="col">
                         <label for="capostraste">Capotraste:</label>
                         <select id="capostraste" class="form-control" name="capotraste" required>
                             <option></option>
@@ -55,14 +70,20 @@ session_start();
                             <option value="5ª casa">5ª casa</option>
                             <option value="6ª casa">6ª casa</option>
                             <option value="7ª casa">7ª casa</option>
-                        </select><br/>
+                        </select>
+                    </div>
+
+                    <div col="col">
                         <label for="instrumento">Instrumento:</label>
                         <select id="instrumento" class="form-control" name="instrumento" required>
                             <option></option>
                             <option value="Violão">Violão</option>
                             <option value="Guitarra">Guitarra</option>
                             <option value="Violão/Guitarra">Violão/Guitarra</option>
-                        </select><br/>
+                        </select>
+                    </div>
+
+                    <div class="col">
                         <label for="idioma">Idioma:</label>
                         <select id="idioma" class="form-control" name="idioma" required>
                             <option></option>
@@ -70,17 +91,21 @@ session_start();
                             <option value="Inglês">Inglês</option>
                             <option value="Espanhol">Espanhol</option>
                             <option value="Frances">Francês</option>
-                        </select><br/>
-                        <label for="letra" class="labelLetra">Letra:</label><textarea id="letra" class="form-control" name="letra" rows="30" cols="80"></textarea>
+                        </select>
                     </div>
-                    
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success" name="musicControl" value="Adicionar">Adicionar</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+
+                <div class="form-row">
+                    <label for="letra" class="labelLetra">Letra:</label><textarea id="letra" class="form-control" style="margin-bottom: 6px" name="letra" rows="10" cols="80"></textarea>
+
+                </div>
+
+                <div class="form-row">
+                    <button type="submit" class="btn btn-success form-control" name="musicControl" value="Adicionar">Adicionar</button>
+                </div>
+            </form>
         
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" style="margin-bottom: 5px; margin-top: 5px">
                 <a href="suasmusicas.php" class="btn btn-success">Voltar</a>
             </div>
         </div>

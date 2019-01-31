@@ -15,10 +15,10 @@ session_start();
     </head>
     
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-center" style="margin-top: 5px">
                 <div class="col-1">
-                    <img src="../assets/images/logo.png" width="40" height="40"/>
+                    <img src="../assets/images/logo.png" class="img-fluid" width="40" height="40"/>
                 </div>
                 <div class="col-4">
                     <div class="h1">4Play</div>
@@ -26,11 +26,11 @@ session_start();
             </div>
         
             <div class="row">
-                <div class="col">
+                <div class="col-5">
                     <div class="table-responsive">
                         <table class="table table-hover table-striped">
                             <thead class="thead-light">
-                                <tr class="colunas">
+                                <tr>
                                     <th>Nome</th>
                                     <th>Artista</th>
                                     <th>Tipo</th>
