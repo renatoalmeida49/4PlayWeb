@@ -7,74 +7,77 @@ session_start();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no" />
         <link rel="icon" type="image/png" href="../assets/images/logo.png"/>
-        <link rel="stylesheet" type="text/css" href="../assets/css/stylePlaylists.css"/>
+        <!-- <link rel="stylesheet" type="text/css" href="../assets/css/stylePlaylists.css"/> -->
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="../assets/script/bootstrap.min.js"></script>
         <script type="text/javascript" src="../assets/script/script.js"></script>
         <title>Playlists</title>
     </head>
     <body>
-        <header>
-            <div class="container">
-                <div class="logo">
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top: 5px">
+                <div class="col-1">
                     <img src="../assets/images/logo.png" width="40" height="40"/>
                 </div>
-                <div class="nome">
-                    4Play
+                <div class="col-4">
+                    <div class="h1">Playlists</div>
                 </div>
             </div>
-        </header>
-        <section>
-            <div class="container sec">
-                <div class="styleButtons">
-                    <div class="tablePlaylists">
-                        <table class="tableConfig">
-                            <tr class="colunas">
-                                <td>Nome</td>
-                                <td>Descrição</td>
-                            </tr>
-                            <?php require_once '../results/TablePlaylist.php'; 
-                            tablePlaylists();?>
+        
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php require_once '../results/TablePlaylist.php'; 
+                                tablePlaylists();?>
+                            </tbody>
                         </table>
                     </div>
                     
-                    <div class="buttonFooter">
-                        <a href="novaPlaylist.php"><button type="button">Nova playlist</button></a>
+                    <a href="novaPlaylist.php" class="btn btn-success">Nova playlist</a>           
+                </div>
+
+                <div class="col">
+                    <div class="table-responsive" >
+                        <table class="table table-striped" id='tableMusicasPlaylist'>
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Artista</th>
+                                    <th>Instrumento</th>
+                                    <th>Idioma</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    if (isset($_GET['id'])){
+                                    require_once '../results/TablePlaylist.php';
+                                    musicasPlaylist($_GET['id']);
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
+
+                    <?php
+                    if (isset($_GET['id'])){
+                        echo '<a href="editarPlaylist.php?id='.$_GET['id'].'"><button>Editar</button></a>';
+                    }
+                    ?>
                 </div>
                 
-                <div class="styleButtons">
-                    <div class="tableMusicasPlaylist" >
-                        <table class="tableConfig" id='tableMusicasPlaylist'>
-                            <tr class="colunas">
-                                <td>Nome</td>
-                                <td>Artista</td>
-                                <td>Instrumento</td>
-                                <td>Idioma</td>
-                            </tr>
-                            <?php
-                            if (isset($_GET['id'])){
-                                require_once '../results/TablePlaylist.php';
-                                musicasPlaylist($_GET['id']);
-                            }
-                            ?>
-                        </table>
-                    </div>
-                    
-                    <div class="buttonFooter" id="buttonFooter">
-                        <?php
-                        if (isset($_GET['id'])){
-                            echo '<a href="editarPlaylist.php?id='.$_GET['id'].'"><button>Editar</button></a>';
-                        }
-                        ?>
-                    </div>
-                </div>
             </div>
-        </section>
-        <footer>
-            <div class="container">
-                <a href="telaInicial.php"><button type="button">Voltar</button></a>
+        
+            <div class="row justify-content-center">
+                <a href="telaInicial.php" class="btn btn-success">Voltar</a>
             </div>
-        </footer>
+        </div>
     </body>
 </html>

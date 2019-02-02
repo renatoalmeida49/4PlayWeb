@@ -1,3 +1,6 @@
+$(function(){
+    
+});
 //Função executada em 'suasMusicas.php' com o clique do mouse
 function preencheDados(nome, art, tipo, capo, lan, ins, cod) {
     var div = document.getElementById("infoMusic");
@@ -10,11 +13,12 @@ function preencheDados(nome, art, tipo, capo, lan, ins, cod) {
     var imgLanguage = "<img src='../assets/images/language-icon.png' height='32' width='32'/>"+lan+"<br/>";
     var imgInstrument = "<img src='../assets/images/instrument-icon.png' height='32' width='32'/>"+ins+"<br/>" ;
     
-    var botao = "<a href='editarMusica.php?id="+cod+"' class='btn btn-success'>Editar</a>";
+    var botao = "<a href='editarMusica.php?id="+cod+"' id='edit' class='btn btn-success'>Editar</a>";
                 
     div.innerHTML = nomeMusica+imgArtist+imgType+imgCapo+imgLanguage+imgInstrument;
     divB.innerHTML = botao;
     
+    addClass();
     /*var classes = document.getElementsByClassName('teste');//pega todas as minhas da tabela
     var linha = document.getElementById(cod);//isso é a linha selecionada
     
@@ -24,6 +28,10 @@ function preencheDados(nome, art, tipo, capo, lan, ins, cod) {
     }*/
     
     preencheLetra(nome);
+}
+
+function addClass(){
+    $('#id').addClass("btn btn-success");
 }
 
 //Função executada pela função 'preencheDados(...)

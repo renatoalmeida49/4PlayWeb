@@ -9,7 +9,7 @@ session_start();
         <link rel="icon" type="imagem/png" href="assets/images/logo.png" />
 	<!-- <link rel="stylesheet" type="text/css" href="assets/css/styleIndex.css" /> -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="assets/script/bootstrap.min.js"></script>
 	<title>4Play</title>
     </head>
     
@@ -34,9 +34,13 @@ session_start();
                         <label for="password">Senha:</label><input required id="password" class="form-control" type="password" size="32" name="senha"/></br>
                     </div>
 
-                    <div class="form-group">
-                        <button class="btn btn-success form-control" style="margin-bottom: 5px" id="botao" type="submit" value="Acessar" name="userControl">Acessar</button>
-                        <a href="views/cadastro.php" class="btn btn-success form-control">Criar login</a>
+                    <div class="form-row">
+                        <div class="col">
+                            <button class="btn btn-success form-control" style="margin-bottom: 5px" id="botao" type="submit" value="Acessar" name="userControl">Acessar</button>
+                        </div>
+                        <div class="col">
+                            <a href="views/cadastro.php" class="btn btn-success form-control">Criar login</a>
+                        </div>
                     </div>
                 </form>
             </div>

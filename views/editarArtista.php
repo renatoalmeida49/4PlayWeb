@@ -7,7 +7,7 @@
         <link rel="icon" type="image/png" href='../assets/images/logo.png'/>
         <!-- <link rel="stylesheet" type="text/css" href='../assets/css/styleEditarArtista.css'/> -->
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="../assets/script/bootstrap.min.js"></script>
         <title>Editar artista</title>
     </head>
     <body>

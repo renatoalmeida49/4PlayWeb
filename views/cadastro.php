@@ -9,7 +9,7 @@ session_start();
         <link rel="icon" type="imagem/png" href="../assets/images/logo.png" />
 	<!-- <link rel="stylesheet" type="text/css" href="../assets/css/styleCadastro.css"> -->
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-        <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="../assets/script/bootstrap.min.js"></script>
 	<title>Cadastro de usuário</title>
     </head>
     
@@ -33,12 +33,12 @@ session_start();
                         <label for="repeatPassword">Repita senha:</label><input class="form-control" required id="repeatPassword" type="password" size="32" name="confSenha"/><br/>
                     </div>
                     
-                    <div class="form-row justify-content-between">
-                        <div class="col justify-content-between">
-                            <div class="form-group">
-                                <button class="btn btn-success" id="botao" name="userControl" value="Cadastrar" type="submit">Cadastrar</button>
-                                <a href="../index.php" class="btn btn-success">Cancelar</a>
-                            </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <button class="btn btn-success form-control" id="botao" name="userControl" value="Cadastrar" type="submit">Cadastrar</button>
+                        </div>
+                        <div class="col">
+                            <a href="../index.php" class="btn btn-success form-control">Cancelar</a>
                         </div>
                     </div>
                 </form>
