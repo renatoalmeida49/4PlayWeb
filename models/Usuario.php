@@ -1,14 +1,10 @@
 <?php
-class User {
+class Usuario {
     private $id;
     private $nome;
     private $login;
     private $user;
     private $senha;
-    
-    public function __construct() {
-        
-    }
     
     public function getId() {
         return $this->id;
@@ -49,5 +45,11 @@ class User {
     public function setSenha($senha) {
         $this->senha = $senha;
     }
-
+}
+interface UsuarioDAO {
+    public function insert(Usuario $usuario);
+    public function update(Usuario $usuario);
+    public function selectById($id);
+    public function selectByLogin(Usuario $usuario);
+    public function delete($id);
 }

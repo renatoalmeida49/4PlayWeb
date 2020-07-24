@@ -9,8 +9,6 @@ class Core {
 
 		$params = array();
 
-		array_shift($url);
-
 		if (!empty($url) && $url != '/') {
 			$url = explode('/', $url);
 
@@ -34,7 +32,7 @@ class Core {
 			$currentAction = 'index';
 		}
 
-		if (!file_exists('controller/'.$currentController.'.php') || !method_exists($currentController, $currentAction)) {
+		if (!file_exists('controllers/'.$currentController.'.php') || !method_exists($currentController, $currentAction)) {
 			$currentController = 'homeController';
 			$currentAction = 'erro404';
 		}
