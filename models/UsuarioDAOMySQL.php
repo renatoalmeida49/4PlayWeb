@@ -7,22 +7,24 @@ class UsuarioDAOMySQL implements UsuarioDAO {
         $this->pdo = $pdo;
     }
     
-    public function insert(Usuario $usuario){
+    public function insert(Usuario $usuario) {
+        $sql = "INSERT INTO usuarios (use_nome, use_log, use_senha) VALUES (:use_nome, :use_log, :use_senha)";
+
         try {
-            $nome = $usuario->getNome();
-            $login = $usuario->getLogin();
-            $senha = $usuario->getSenha();
-        
-            $query = "INSERT INTO usuarios (use_nome, use_log, use_senha) VALUES (?, ?, ?)";
-        
-            $stmt = $this->pdo->getConnection()->prepare($query);
-            $stmt->bindParam(1, $nome);
-            $stmt->bindParam(2, $login);
-            $stmt->bindParam(3, $senha);
-        
-            $query = $stmt->execute();
-            
-            return true;
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(':use_nome', $usuario->getNome());
+            $stmt->bindValue(':use_log', $usuario->getLogin());
+            $stmt->bindValue(':use_senha', $usuario->getPassword());
+            $stmt->execute();
+
+            $usuario->setId($this->pdo->lastInsertId());
+
+            if ($usuario->getId() != 0) {
+                return true;
+            } else {
+                echo "Falha ao add";
+                return false;
+            }
         } catch (Exception $ex) {
             echo 'Falha ao adicionar usuário '.$ex->getMessage();
             return false;
@@ -45,7 +47,6 @@ class UsuarioDAOMySQL implements UsuarioDAO {
             $resultado = $stmt->fetch();
 
             $usuario->setId($resultado['use_cod']);
-
         } else {
             $usuario->setId(0);
         }

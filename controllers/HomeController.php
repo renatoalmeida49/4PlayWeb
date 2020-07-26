@@ -22,6 +22,24 @@ class HomeController extends Controller {
 			} else {
 				$this->loadLoginTemplate();
 			}
+		} else if (isset($_POST['loginCadastro']) && !empty($_POST['loginCadastro'])) {
+			if ($_POST['passwordCadastro'] == $_POST['repeatPassword']) {
+				$dao = new UsuarioDAOMySQL(Database::getInstance());
+
+				$usuario = new Usuario();
+
+				$usuario->setNome($_POST['nomeCadastro']);
+				$usuario->setLogin($_POST['loginCadastro']);
+				$usuario->setPassword($_POST['passwordCadastro']);
+
+				if ($dao->insert($usuario)) {
+					header("Location: ".BASE_URL);
+				} else {
+					echo "Falha ao adicionar usuário.";
+				}
+			} else {
+				echo "Senhas digitadas não conferem";
+			}
 		} else {
 			$this->loadLoginTemplate();
 		}

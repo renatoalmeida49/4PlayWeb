@@ -4,7 +4,7 @@ class Usuario {
     private $nome;
     private $login;
     private $user;
-    private $senha;
+    private $password;
     
     public function getId() {
         return $this->id;
@@ -22,7 +22,7 @@ class Usuario {
         return $this->user;
     }
 
-    public function getSenha() {
+    public function getPassword() {
         return $this->senha;
     }
 
@@ -42,7 +42,7 @@ class Usuario {
         $this->user = $user;
     }
 
-    public function setSenha($senha) {
+    public function setPassword($senha) {
         $this->senha = $senha;
     }
 }
