@@ -1,22 +1,23 @@
 <?php
 class HomeController extends Controller {
 	public function index() {
+		$dados = array();
+		
 		if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
-			$dados = array();
-
 			$this->loadTemplate('home', $dados);
 		} else if (isset($_POST['login']) && !empty($_POST['login'])) {
 			$dao = new UsuarioDAOMySQL(Database::getInstance());
 
 			$usuario = new Usuario();
 			$usuario->setLogin($_POST['login']);
-			$usuario->setSenha($_POST['password']);
+			$usuario->setPassword($_POST['password']);
 
 			$usuario = $dao->selectByLogin($usuario);
 
 			if ($usuario->getId() != 0) {
 				$_SESSION['id'] = $usuario->getId();
 				$_SESSION['login'] = $usuario->getLogin();
+				$_SESSION['nome'] = $usuario->getNome();
 
 				$this->loadTemplate('home', $dados);
 			} else {

@@ -39,7 +39,7 @@ class UsuarioDAOMySQL implements UsuarioDAO {
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':login', $usuario->getLogin());
-        $stmt->bindValue(':senha', $usuario->getSenha());
+        $stmt->bindValue(':senha', $usuario->getPassword());
 
         $stmt->execute();
 
