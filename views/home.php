@@ -1,14 +1,7 @@
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #6c757d">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="">Opções</a>
-            <a class="nav-item nav-link" href="<?php echo BASE_URL; ?>home/sair">Sair</a>
-        </div>
-    </nav>
-    
     <div class="row justify-content-center">
         <div class="col-6">
-            <div class="h3">4Play - Bem vindo, <?php echo "{$_SESSION['nome']}"?></div>
+            <div class="h3">4Play - Bem vindo, <?php echo $_SESSION['nome']; ?></div>
         </div>
     </div>
     
