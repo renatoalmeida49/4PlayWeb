@@ -1,23 +1,25 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.9.2
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 16-Jun-2018 às 15:48
--- Versão do servidor: 5.6.17
--- PHP Version: 5.5.12
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 27-Jul-2020 às 17:54
+-- Versão do servidor: 10.4.10-MariaDB
+-- versão do PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `4play`
+-- Banco de dados: `4play`
 --
 
 -- --------------------------------------------------------
@@ -26,15 +28,15 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `artistas`
 --
 
+DROP TABLE IF EXISTS `artistas`;
 CREATE TABLE IF NOT EXISTS `artistas` (
-  `art_cod` int(11) NOT NULL AUTO_INCREMENT,
-  `art_use_cod` int(11) NOT NULL,
-  `art_nome` varchar(30) NOT NULL,
-  `art_estilo` varchar(30) NOT NULL,
-  PRIMARY KEY (`art_cod`),
-  KEY `art_use_cod` (`art_use_cod`),
-  KEY `art_use_cod_2` (`art_use_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(30) NOT NULL,
+  `estilo` varchar(30) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idUsuario` (`idUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -42,20 +44,21 @@ CREATE TABLE IF NOT EXISTS `artistas` (
 -- Estrutura da tabela `musicas`
 --
 
+DROP TABLE IF EXISTS `musicas`;
 CREATE TABLE IF NOT EXISTS `musicas` (
-  `mus_cod` int(11) NOT NULL AUTO_INCREMENT,
-  `mus_use_cod` int(11) NOT NULL,
-  `mus_art_cod` int(11) NOT NULL,
-  `mus_nome` varchar(30) NOT NULL,
-  `mus_tipo` varchar(30) NOT NULL,
-  `mus_capo` varchar(10) NOT NULL,
-  `mus_instrumento` varchar(15) NOT NULL,
-  `mus_idioma` varchar(10) NOT NULL,
-  `mus_letra` text NOT NULL,
-  PRIMARY KEY (`mus_cod`),
-  KEY `mus_use_cod` (`mus_use_cod`,`mus_art_cod`),
-  KEY `mus_art_cod` (`mus_art_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(30) NOT NULL,
+  `instrumento` varchar(30) NOT NULL,
+  `capotraste` varchar(30) NOT NULL,
+  `idioma` varchar(16) NOT NULL,
+  `tecnica` varchar(16) NOT NULL,
+  `letra` text DEFAULT NULL,
+  `idUsuario` int(11) NOT NULL,
+  `idArtista` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idUsuario` (`idUsuario`),
+  KEY `idArtista` (`idArtista`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -63,11 +66,12 @@ CREATE TABLE IF NOT EXISTS `musicas` (
 -- Estrutura da tabela `musicasplaylists`
 --
 
+DROP TABLE IF EXISTS `musicasplaylists`;
 CREATE TABLE IF NOT EXISTS `musicasplaylists` (
-  `mpl_pla_cod` int(11) NOT NULL,
-  `mpl_mus_cod` int(11) NOT NULL,
-  KEY `mpl_pla_cod` (`mpl_pla_cod`,`mpl_mus_cod`),
-  KEY `mpl_mus_cod` (`mpl_mus_cod`)
+  `idPlaylist` int(11) NOT NULL,
+  `idMusica` int(11) NOT NULL,
+  KEY `idPlaylist` (`idPlaylist`),
+  KEY `idMusica` (`idMusica`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -76,58 +80,69 @@ CREATE TABLE IF NOT EXISTS `musicasplaylists` (
 -- Estrutura da tabela `playlists`
 --
 
+DROP TABLE IF EXISTS `playlists`;
 CREATE TABLE IF NOT EXISTS `playlists` (
-  `pla_cod` int(11) NOT NULL AUTO_INCREMENT,
-  `pla_use_cod` int(11) NOT NULL,
-  `pla_nome` varchar(30) NOT NULL,
-  `pla_descricao` text NOT NULL,
-  PRIMARY KEY (`pla_cod`),
-  KEY `pla_use_cod` (`pla_use_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(32) NOT NULL,
+  `descricao` text DEFAULT NULL,
+  `idUsuario` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idUsuario` (`idUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Estrutura da tabela `usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `use_cod` int(11) NOT NULL AUTO_INCREMENT,
-  `use_nome` varchar(30) CHARACTER SET utf16 COLLATE utf16_bin DEFAULT NULL,
-  `use_log` varchar(30) NOT NULL,
-  `use_senha` varchar(30) NOT NULL,
-  PRIMARY KEY (`use_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(32) NOT NULL,
+  `login` varchar(16) NOT NULL,
+  `senha` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Constraints for dumped tables
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`) VALUES
+(1, 'Renato Novaes', 'renato', 'ec02d2d95c27675d87dca50018d89192'),
+(2, 'Beatriz Novaes', 'beatriz', '323242097368577e6f3aac03c6dcedb6');
+
+--
+-- Restrições para despejos de tabelas
 --
 
 --
 -- Limitadores para a tabela `artistas`
 --
 ALTER TABLE `artistas`
-  ADD CONSTRAINT `artistas_ibfk_1` FOREIGN KEY (`art_use_cod`) REFERENCES `users` (`use_cod`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkUsuarios` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `musicas`
 --
 ALTER TABLE `musicas`
-  ADD CONSTRAINT `musicas_ibfk_1` FOREIGN KEY (`mus_use_cod`) REFERENCES `users` (`use_cod`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `musicas_ibfk_2` FOREIGN KEY (`mus_art_cod`) REFERENCES `artistas` (`art_cod`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkArtistas` FOREIGN KEY (`idArtista`) REFERENCES `artistas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `musicas_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`);
 
 --
 -- Limitadores para a tabela `musicasplaylists`
 --
 ALTER TABLE `musicasplaylists`
-  ADD CONSTRAINT `musicasplaylists_ibfk_1` FOREIGN KEY (`mpl_pla_cod`) REFERENCES `playlists` (`pla_cod`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `musicasplaylists_ibfk_2` FOREIGN KEY (`mpl_mus_cod`) REFERENCES `musicas` (`mus_cod`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `musicasplaylists_ibfk_1` FOREIGN KEY (`idPlaylist`) REFERENCES `playlists` (`id`),
+  ADD CONSTRAINT `musicasplaylists_ibfk_2` FOREIGN KEY (`idMusica`) REFERENCES `musicas` (`id`);
 
 --
 -- Limitadores para a tabela `playlists`
 --
 ALTER TABLE `playlists`
-  ADD CONSTRAINT `playlists_ibfk_1` FOREIGN KEY (`pla_use_cod`) REFERENCES `users` (`use_cod`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `playlists_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

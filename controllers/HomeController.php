@@ -2,7 +2,7 @@
 class HomeController extends Controller {
 	public function index() {
 		$dados = array();
-		
+
 		if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 			$this->loadTemplate('home', $dados);
 		} else if (isset($_POST['login']) && !empty($_POST['login'])) {
@@ -10,7 +10,7 @@ class HomeController extends Controller {
 
 			$usuario = new Usuario();
 			$usuario->setLogin($_POST['login']);
-			$usuario->setPassword($_POST['password']);
+			$usuario->setPassword(md5($_POST['password']));
 
 			$usuario = $dao->selectByLogin($usuario);
 
@@ -31,7 +31,7 @@ class HomeController extends Controller {
 
 				$usuario->setNome($_POST['nomeCadastro']);
 				$usuario->setLogin($_POST['loginCadastro']);
-				$usuario->setPassword($_POST['passwordCadastro']);
+				$usuario->setPassword(md5($_POST['passwordCadastro']));
 
 				if ($dao->insert($usuario)) {
 					header("Location: ".BASE_URL);

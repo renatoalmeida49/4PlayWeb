@@ -8,7 +8,7 @@ class UsuarioDAOMySQL implements UsuarioDAO {
     }
     
     public function insert(Usuario $usuario) {
-        $sql = "INSERT INTO usuarios (use_nome, use_log, use_senha) VALUES (:use_nome, :use_log, :use_senha)";
+        $sql = "INSERT INTO usuarios (nome, login, senha) VALUES (:use_nome, :use_log, :use_senha)";
 
         try {
             $stmt = $this->pdo->prepare($sql);
@@ -25,7 +25,7 @@ class UsuarioDAOMySQL implements UsuarioDAO {
                 echo "Falha ao add";
                 return false;
             }
-        } catch (Exception $ex) {
+        } catch (PDOException $ex) {
             echo 'Falha ao adicionar usuário '.$ex->getMessage();
             return false;
         }
@@ -35,7 +35,7 @@ class UsuarioDAOMySQL implements UsuarioDAO {
     public function selectById($id) {}
 
     public function selectByLogin(Usuario $usuario) {
-        $sql = "SELECT * FROM usuarios WHERE use_log = :login AND use_senha = :senha";
+        $sql = "SELECT * FROM usuarios WHERE login = :login AND senha = :senha";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':login', $usuario->getLogin());
@@ -46,7 +46,7 @@ class UsuarioDAOMySQL implements UsuarioDAO {
         if ($stmt->rowCount() > 0) {
             $resultado = $stmt->fetch();
 
-            $usuario->setId($resultado['use_cod']);
+            $usuario->setId($resultado['id']);
         } else {
             $usuario->setId(0);
         }
