@@ -1,6 +1,37 @@
 header {
 	margin-bottom: 55px;
+	background-color: black;
+	height: 50px;
+	position: relative;
 }
+
+header .container {
+	display: flex;
+	height: inherit;
+	box-sizing: border-box;
+	justify-content: space-between;
+}
+
+.logo {
+	align-items: center;
+}
+
+.logo a {
+	color: white;
+}
+
+.options {
+	align-items: center;
+	justify-content: space-between;
+	display: flex;
+}
+
+.options a {
+	text-decoration: none;
+	color: white;
+	margin-left: 15px;
+}
+
 
 .navbar {
 	background-color: black;

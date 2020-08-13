@@ -10,23 +10,18 @@
   </head>
   <body class="bg-dark">
     <header>
-      <nav class="navbar navbar-expand-md fixed-top navbar-dark">
-        <a class="navbar-brand" href="<?php echo BASE_URL; ?>">4Play</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a href="" class="nav-link">Opções</a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php BASE_URL; ?>home/sair" class="nav-link">Sair</a>
-            </li>
-          </ul>
+      <div class="container">
+        <div class="logo">
+          <a href="<?php echo BASE_URL; ?>">
+            <img src="<?php echo BASE_URL; ?>/assets/images/logo.png" width="45" height="45"/>
+            4Play
+          </a>
         </div>
-      </nav>
+        <div class="options">
+          <a href="<?php BASE_URL; ?>config">Opções</a>
+          <a href="<?php BASE_URL; ?>home/sair">Sair</a>
+        </div>
+      </div>
     </header>
 
     <?php $this->loadViewInTemplate($viewName, $viewData); ?>
