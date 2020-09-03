@@ -18,7 +18,7 @@
           </a>
         </div>
         <div class="options">
-          <a href="<?=$base;?>/config">Opções</a>
+          <a href="<?=$base;?>/settings">Opções</a>
           <a href="<?=$base;?>/sair">Sair</a>
         </div>
       </div>

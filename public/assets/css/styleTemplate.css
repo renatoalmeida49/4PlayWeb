@@ -1,5 +1,4 @@
 header {
-	margin-bottom: 55px;
 	background-color: black;
 	height: 50px;
 	position: relative;
@@ -32,7 +31,41 @@ header .container {
 	margin-left: 15px;
 }
 
+.main {
+	display: flex;
+}
 
 .navbar {
 	background-color: black;
+}
+
+aside {
+	margin-top: 5px;
+	display: block;
+	width: 150px;
+}
+
+nav a {
+	display: block;
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+}
+
+nav a:hover {
+	background-color: #28a745;
+	border-radius: 7px;
+	text-decoration: none;
+	color: white;
+}
+
+.menu-splitter {
+	border-top: 1px solid #ccc;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.active {
+	background-color: #28a745;
+	border-radius: 7px;
 }
