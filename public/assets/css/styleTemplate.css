@@ -69,3 +69,26 @@ nav a:hover {
 	background-color: #28a745;
 	border-radius: 7px;
 }
+
+.toggle {
+	height: 100%;
+	display: none;
+} 
+
+.toggle-line {
+	width: 30px;
+    margin: 2px;
+    border-top: 5px solid #ccc;
+    margin-top: 7px;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+	.toggle {
+		display: block;
+	}
+
+	aside {
+		display: none;
+	}
+}

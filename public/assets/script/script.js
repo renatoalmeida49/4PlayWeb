@@ -68,3 +68,13 @@ function selecionaLinha(cod) {
         linha.style.background = "#81F79F";
     }
 }
+
+document.querySelector('.toggle').addEventListener('click', ()=>{
+    let menu = document.querySelector('aside');
+
+    if(menu.style.display == 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
+});

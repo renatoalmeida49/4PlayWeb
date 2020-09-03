@@ -11,6 +11,11 @@
   <body class="bg-dark">
     <header>
       <div class="container">
+        <div class="toggle">
+          <div class="toggle-line"></div>
+          <div class="toggle-line"></div>
+          <div class="toggle-line"></div>
+        </div>
         <div class="logo">
           <a href="<?=$base;?>">
             <img src="<?=$base;?>/assets/images/logo.png" width="45" height="45"/>
