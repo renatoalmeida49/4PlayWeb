@@ -26,7 +26,7 @@ class UserHandler {
         return false;
     }
 
-    public function verifyLogin($login, $password) {
+    public static function verifyLogin($login, $password) {
         $user = User::select()->where('login', $login)->one();
 
         if ($user) {
@@ -45,12 +45,30 @@ class UserHandler {
         return false;
     }
 
-    public function loginExists($login) {
+    public static function validateUpdateLogin($login, $id) {
+        $user = User::select()
+                ->where('login', $login)
+            ->get();
+        
+        if(count($user) == 0) {
+            return true;
+        }
+
+        if(count($user) == 1) {
+            if($user[0]['id'] == $id) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static function loginExists($login) {
         $user = User::select()->where('login', $login)->one();
         return $user ? true : false;
     }
 
-    public function addUser($name, $login, $password) {
+    public static function addUser($name, $login, $password) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $token = md5(time().rand(0,9999).time());
 
@@ -62,5 +80,41 @@ class UserHandler {
         ])->execute();
 
         return $token;
+    }
+
+    public static function getUser($id) {
+        $data = User::select()->where('id', $id)->one();
+
+        if($data) {
+            $user = new User();
+            $user->id = $data['id'];
+            $user->name = $data['name'];
+            $user->login = $data['login'];
+
+            return $user;
+        }
+
+        return false;
+    }
+
+    public static function update($update) {
+        if($update['password'] == '') {
+            $result = User::update()
+                        ->set('name', $update['name'])
+                        ->set('login', $update['login'])
+                        ->where('id', $update['id'])
+                    ->execute();
+        } else {
+            $hash = password_hash($update['password'], PASSWORD_DEFAULT);
+
+            $result = User::update()
+                        ->set('name', $update['name'])
+                        ->set('login', $update['login'])
+                        ->set('password', $hash)
+                        ->where('id', $update['id'])
+                    ->execute();
+        }
+
+        return $result;
     }
 }

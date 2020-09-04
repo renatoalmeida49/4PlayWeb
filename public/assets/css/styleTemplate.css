@@ -83,6 +83,21 @@ nav a:hover {
     border-radius: 20px;
 }
 
+
+.form-settings {
+	color: white;
+}
+
+.flash {
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+	padding: 3px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+}
+
 @media (max-width: 768px) {
 	.toggle {
 		display: block;

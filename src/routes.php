@@ -14,5 +14,6 @@ $router->get('/suasMusicas', 'SuasMusicasController@index');
 $router->get('/playlists', 'PlaylistsController@index');
 
 $router->get('/settings', 'SettingsController@index');
+$router->post('/settings/action', 'SettingsController@action');
 
 $router->get('/sair', 'LoginController@logout');
