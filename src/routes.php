@@ -10,6 +10,7 @@ $router->post('/login', 'LoginController@singIn');
 $router->post('/login/singUp', 'LoginController@singUp');
 
 $router->get('/suasMusicas', 'SuasMusicasController@index');
+$router->post('/suasMusicas', 'SuasMusicasController@add');
 
 $router->get('/playlists', 'PlaylistsController@index');
 
