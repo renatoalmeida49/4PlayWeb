@@ -52,4 +52,21 @@ class MusicHandler {
         return $feed;
     }
 
+    public static function getMusic($id) {
+        //TO DO: buscar música no banco e retornar os dados dela
+    }
+
+    public static function verifyCredentials($idMusic, $idUser) {
+        $result = Music::select()
+            ->where('id', $idMusic)
+            ->where('idUser', $idUser)
+        ->get();
+
+        if(count($result) > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

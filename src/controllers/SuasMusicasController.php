@@ -42,4 +42,16 @@ class SuasMusicasController extends Controller {
 		$this->redirect('/');
 	}
 
+	public function music($attr = []) {
+		$id = $attr['id'];
+		
+		if(!MusicHandler::verifyCredentials($id, $this->loggedUser->id)) {
+			$this->redirect('/');
+		}
+
+		$music = MusicHandler::getMusic($id);
+
+		$this->render('music', ['music' => $music]);
+	}
+
 }

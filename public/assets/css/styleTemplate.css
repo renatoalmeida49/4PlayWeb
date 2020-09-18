@@ -117,6 +117,14 @@ nav a:hover {
 	margin-left: 15px;
 }
 
+.feed-item:hover {
+	background-color: #c9cacc;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
 .feed-item img {
 	margin-right: 10px;
 }

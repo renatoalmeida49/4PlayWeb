@@ -12,6 +12,8 @@ $router->post('/login/singUp', 'LoginController@singUp');
 $router->get('/suasMusicas', 'SuasMusicasController@index');
 $router->post('/suasMusicas', 'SuasMusicasController@add');
 
+$router->get('/music/{id}', 'SuasMusicasController@music');
+
 $router->get('/playlists', 'PlaylistsController@index');
 
 $router->get('/settings', 'SettingsController@index');
