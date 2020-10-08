@@ -4,7 +4,7 @@ require 'environment.php';
 $config = array();
 
 if (ENVIRONMENT == 'development') {
-	define("BASE_URL", "http://localhost/4PlayWeb/");
+	define("BASE_URL", "http://localhost/4playweb/");
 	$config['dbname'] = '4play';
 	$config['host'] = 'localhost';
 	$config['dbuser'] = 'root';
