@@ -7,8 +7,8 @@ class Config {
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';
     const DB_DATABASE = '4playweb';
-    CONST DB_USER = 'root';
-    const DB_PASS = '';
+    CONST DB_USER = 'developer';
+    const DB_PASS = 'developer';
 
     const ERROR_CONTROLLER = 'ErrorController';
     const DEFAULT_ACTION = 'index';
