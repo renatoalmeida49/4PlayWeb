@@ -6,9 +6,8 @@
 
     <div class="container">
 
-        <?php foreach($feed as $item): ?>
-            <?= $render('feed-item', ['data' => $item]); ?>
-        <?php endforeach;?>
+        <p>Adicione músicas</p>
+        <p>Crie uma playlist</p>
 
     </div>
 </section>

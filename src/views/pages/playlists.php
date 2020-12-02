@@ -4,10 +4,18 @@
     <?=$render('aside', ['activeMenu' => 'playlists']); ?>
 
     <div class="container">
-        <div class="row">
-        <div class="col">
-            <h3>Playlists</h3>
+        <p class="h1">Playlists</p>
+
+        <a href="#modalAdicionarPlaylist" class="btn btn-success" data-toggle="modal" data-target="#modalAdicionarPlaylist">Adicionar playlist</a>
+
+        <?= $render('modalAdicionarPlaylist', []); ?>
+     
+        <div class="grid-playlists">
+            <?php foreach($playlists as $playlist): ?>
+                <?= $render('playlist-item', ['playlist' => $playlist]); ?>
+            <?php endforeach; ?>
         </div>
+
     </div>
 </section>
 

@@ -12,9 +12,10 @@ $router->post('/login/singUp', 'LoginController@singUp');
 $router->get('/suasMusicas', 'SuasMusicasController@index');
 $router->post('/suasMusicas', 'SuasMusicasController@add');
 
-$router->get('/music/{id}', 'SuasMusicasController@music');
+$router->get('/suasMusicas/{id}', 'SuasMusicasController@music');
 
 $router->get('/playlists', 'PlaylistsController@index');
+$router->post('/playlists', 'PlaylistsController@add');
 
 $router->get('/settings', 'SettingsController@index');
 $router->post('/settings/action', 'SettingsController@action');

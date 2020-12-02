@@ -4,7 +4,10 @@
     <?= $render('aside', ['activeMenu' => 'suasMusicas']); ?>
 
     <div class="container">
-        Aqui virão todos os detalhes da música.
+        <p><?= $music->nome; ?></p>
+        <p><?= $music->artista; ?></p>
+        <p><?= $music->capotraste; ?></p>
+        <p><?= $music->instrumento; ?></p>
     </div>
 
 </section>

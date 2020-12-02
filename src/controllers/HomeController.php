@@ -20,10 +20,7 @@ class HomeController extends Controller {
 	public function index() {
 		$dados = array();
 
-		$feed = MusicHandler::getMusics($this->loggedUser->id);
-
 		$this->render('home', [
-			'feed' => $feed,
 			'loggedUser' => $this->loggedUser
 		]);
 	}

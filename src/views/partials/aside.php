@@ -1,7 +1,7 @@
 <aside>
     <nav>
         <a href="<?=$base;?>" class="<?= ($activeMenu == 'home') ? 'active':'';?>">Início</a>
-        <a href="<?=$base;?>/suasMusicas" class="<?= ($activeMenu == 'novaMusica') ? 'active':'';?>">Nova música</a>
+        <a href="<?=$base;?>/suasMusicas" class="<?= ($activeMenu == 'suasMusicas') ? 'active':'';?>">Suas músicas</a>
         <a href="<?=$base;?>/playlists" class="<?= ($activeMenu == 'playlists') ? 'active':'';?>">Playlists</a>
 
         <div class="menu-splitter"></div>

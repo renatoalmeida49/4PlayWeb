@@ -10,11 +10,8 @@ class MusicHandler {
             'idUser' => $add['idUser'],
             'nome' => $add['nome'],
             'artista' => $add['artista'],
-            'tipo' => $add['tipo'],
             'capotraste' => $add['capotraste'],
             'instrumento' => $add['instrumento'],
-            'idioma'  => $add['idioma'],
-            'letra' => $add['letra']
         ])->execute();
 
         return true;
@@ -40,11 +37,8 @@ class MusicHandler {
             $newMusic->idUser = $musicItem['idUser'];
             $newMusic->nome = $musicItem['nome'];
             $newMusic->artista = $musicItem['artista'];
-            $newMusic->tipo = $musicItem['tipo'];
             $newMusic->capotraste = $musicItem['capotraste'];
             $newMusic->instrumento = $musicItem['instrumento'];
-            $newMusic->idioma = $musicItem['idioma'];
-            $newMusic->letra = $musicItem['letra'];
 
             $feed[] = $newMusic;
         }
@@ -53,7 +47,24 @@ class MusicHandler {
     }
 
     public static function getMusic($id) {
-        //TO DO: buscar música no banco e retornar os dados dela
+       $result = Music::select()
+            ->where('id', $id)
+        ->get();
+
+        if(count($result) > 0) {
+            $music = new Music();
+
+            $music->id = $result[0]['id'];
+            $music->idUser = $result[0]['idUser'];
+            $music->nome = $result[0]['nome'];
+            $music->artista = $result[0]['artista'];
+            $music->capotraste = $result[0]['capotraste'];
+            $music->instrumento = $result[0]['instrumento'];
+            
+            return $music;
+        } else {
+            return $id;
+        }
     }
 
     public static function verifyCredentials($idMusic, $idUser) {
