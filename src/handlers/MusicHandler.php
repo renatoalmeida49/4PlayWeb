@@ -80,4 +80,19 @@ class MusicHandler {
         return false;
     }
 
+    public static function deleteMusic($id) {
+        Music::delete()
+            ->where('id', $id)
+        ->execute();
+    }
+
+    public static function updateMusic($update) {
+        $result = Music::update()
+                    ->set('nome', $update['nome'])
+                    ->set('artista', $update['artista'])
+                    ->set('capotraste', $update['capotraste'])
+                    ->set('instrumento', $update['instrumento'])
+                    ->where('id', $update['id'])
+                ->execute();
+    }
 }

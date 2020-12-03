@@ -43,23 +43,26 @@ class SuasMusicasController extends Controller {
 	}
 
 	public function editar($attr = []) {
-		$id = $attr['id'];
-		
-		if(!MusicHandler::verifyCredentials($id, $this->loggedUser->id)) {
-			$this->redirect('/');
-		}
+		$update = array();
 
-		$music = MusicHandler::getMusic($id);
+		$update['id'] = filter_input(INPUT_POST, 'id');
+		$update['idUser'] = $this->loggedUser->id;
+		$update['nome'] = filter_input(INPUT_POST, 'name');
+		$update['artista'] = filter_input(INPUT_POST, 'artist');
+		$update['capotraste'] = filter_input(INPUT_POST, 'capotraste');
+		$update['instrumento']  = filter_input(INPUT_POST, 'instrumento');
 
-		$this->render('music', ['music' => $music]);
-	}
+		MusicHandler::updateMusic($update);
 
-	public function editarAction($attr = []) {
-		$id = $attr['id'];
+		$this->redirect('/suasMusicas');
 	}
 
 	public function excluir($attr = []) {
 		$id = $attr['id'];
+
+		MusicHandler::deleteMusic($id);
+
+		$this->redirect('/suasMusicas');
 	}
 
 }

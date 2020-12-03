@@ -11,7 +11,7 @@ $router->post('/login/singUp', 'LoginController@singUp');
 
 $router->get('/suasMusicas', 'SuasMusicasController@index');
 $router->post('/suasMusicas', 'SuasMusicasController@add');
-$router->get('/suasMusicas/editar/{id}', 'SuasMusicasController@editar');
+$router->post('/suasMusicas/editar', 'SuasMusicasController@editar');
 $router->get('/suasMusicas/excluir/{id}', 'SuasMusicasController@excluir');
 
 $router->get('/suasMusicas/{id}', 'SuasMusicasController@music');
@@ -24,3 +24,6 @@ $router->get('/settings', 'SettingsController@index');
 $router->post('/settings/action', 'SettingsController@action');
 
 $router->get('/sair', 'LoginController@logout');
+
+$router->get('/ajax/music/', 'AjaxController@music');
+$router->get('/ajax/playlists/', 'AjaxController@playlists');

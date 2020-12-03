@@ -1,10 +1,12 @@
-<? $render('header'); ?>
-<section class="container main">
-    <div class="container">
-        <div class="row">
-        <div class="col">
-            <h3>Página não encontrada</h3>
+<?= $render('header'); ?>
+    <?= $render('aside', ['actice' => 'home']); ?>
+    <section class="container main">
+        <div class="container">
+            <div class="row">
+            <div class="col">
+                <h3>Página não encontrada</h3>
+            </div>
         </div>
-    </div>
 
-</section>
+    </section>
+<?= $render('footer'); ?>

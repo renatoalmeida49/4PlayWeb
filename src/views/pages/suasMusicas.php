@@ -9,7 +9,9 @@
 
         <a href="#modalAdicionarMusica" class="btn btn-success" data-toggle="modal" data-target="#modalAdicionarMusica">Adicionar música</a>
 
-        <?= $render('modalAdicionarMusica', []); ?>
+        <?= $render('modalAdicionarMusica'); ?>
+        <?= $render('modalEditarMusica'); ?>
+        <?= $render('modalAdicionarAPlaylist'); ?>
 
         <table class="table table-hover">
             <thead class="thead-dark">
