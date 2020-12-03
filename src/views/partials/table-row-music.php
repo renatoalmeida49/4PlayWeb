@@ -13,7 +13,7 @@
 
             <div class="dropdown-content">
                 <a class="dropdown-item modal-music" href="#modalEditarMusica" data-music-id="<?=$data->id;?>">Editar</a>
-                <a class="dropdown-item modal-playlists" href="#modalAdicionarAPlaylist">Adicionar à playlist</a>
+                <a class="dropdown-item modal-playlists" href="#modalAdicionarAPlaylist" data-music-id="<?=$data->id;?>">Adicionar à playlist</a>
                 <a class="dropdown-item" href="<?= $base; ?>/suasMusicas/excluir/<?= $data->id; ?>">Excluir</a>
             </div>
         </div>

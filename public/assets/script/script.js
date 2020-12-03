@@ -1,9 +1,3 @@
-// FUNÇÕES PARA MANUSEIO DAS OPÇÕES DAS MÚSICAS
-
-function getPlaylists() {
-    console.log('Chamar requisição Ajax para playlists')
-}
-
 // ADICIONANDO AS FUNÇÕES NOS BOTÕES
 
 if(document.querySelectorAll('.modal-music')) {
@@ -36,6 +30,10 @@ if(document.querySelectorAll('.modal-playlists')) {
 
     $('.modal-playlists').bind('click', function(e){
 
+        let idMusic = $(this).data('music-id')
+
+        $('.tbody-playlists').html('')
+
         $.ajax({
             type: 'GET',
             url: BASE+'/ajax/playlists/',
@@ -50,6 +48,7 @@ if(document.querySelectorAll('.modal-playlists')) {
                     html += "<td>" + parseInt(index+1) + "</td>"
                     html += "<td>" + e['name'] + "</td>"
                     html += "<td>" + e['descricao'] + "</td>"
+                    html += "<td><a href='"+BASE+"/playlist/" + e['id'] + "/addMusic/" + idMusic + "'>Add</a></td>"
                     html += "</tr>"
 
                     $('.tbody-playlists').append(html)

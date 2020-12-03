@@ -19,6 +19,8 @@ $router->get('/suasMusicas/{id}', 'SuasMusicasController@music');
 $router->get('/playlists', 'PlaylistsController@index');
 $router->post('/playlists', 'PlaylistsController@add');
 $router->get('/playlist/{id}', 'PlaylistsController@playlist');
+$router->get('/playlist/{id}/addMusic/{idMusic}', 'PlaylistsController@addMusic');
+
 
 $router->get('/settings', 'SettingsController@index');
 $router->post('/settings/action', 'SettingsController@action');
