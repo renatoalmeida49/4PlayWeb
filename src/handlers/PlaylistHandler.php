@@ -25,6 +25,16 @@ class PlaylistHandler {
         return $posts;
     }
 
+    public static function getPlaylist($id) {
+        $playlist = Playlist::select()
+                ->where('id', $id)
+        ->get();
+
+        $result = self::_postListObject($playlist);
+
+        return $result;
+    }
+
     public static function _postListObject($playlistList) {
         $feed = [];
 

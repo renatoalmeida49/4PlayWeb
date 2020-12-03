@@ -40,4 +40,12 @@ class PlaylistsController extends Controller {
 		$this->redirect('/playlists');
 	}
 
+	public function playlist($attr = []) {
+		$id = $attr['id'];
+
+		$playlist = PlaylistHandler::getPlaylist($id);
+
+		$this->render('playlist', ['playlist' => $playlist]);
+	}
+
 }

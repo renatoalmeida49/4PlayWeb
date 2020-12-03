@@ -42,7 +42,7 @@ class SuasMusicasController extends Controller {
 		$this->redirect('/suasMusicas');
 	}
 
-	public function music($attr = []) {
+	public function editar($attr = []) {
 		$id = $attr['id'];
 		
 		if(!MusicHandler::verifyCredentials($id, $this->loggedUser->id)) {
@@ -52,6 +52,14 @@ class SuasMusicasController extends Controller {
 		$music = MusicHandler::getMusic($id);
 
 		$this->render('music', ['music' => $music]);
+	}
+
+	public function editarAction($attr = []) {
+		$id = $attr['id'];
+	}
+
+	public function excluir($attr = []) {
+		$id = $attr['id'];
 	}
 
 }
