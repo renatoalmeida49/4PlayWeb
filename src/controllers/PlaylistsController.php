@@ -4,7 +4,7 @@ namespace src\controllers;
 use core\Controller;
 use src\handlers\UserHandler;
 use src\handlers\PlaylistHandler;
-use src\handlers\MusicsPlaylist;
+use src\handlers\PlaylistMusicHandler;
 
 class PlaylistsController extends Controller {
 
@@ -45,15 +45,19 @@ class PlaylistsController extends Controller {
 		$id = $attr['id'];
 
 		$playlist = PlaylistHandler::getPlaylist($id);
+		$musics = PlaylistMusicHandler::getMusics($id);
 
-		$this->render('playlist', ['playlist' => $playlist]);
+		$this->render('playlist', [
+			'playlist' => $playlist,
+			'musics' => $musics
+			]);
 	}
 
-	public function addMusic($atrr = []) {
+	public function addMusic($attr = []) {
 		$idPlaylist = $attr['id'];
-		$idMusic = $attr['idMusic'];
+		$idMusic = $attr['p1'];
 
-		MusicsPlaylist::add($idPlaylist, $idMusic);
+		PlaylistMusicHandler::add($idPlaylist, $idMusic);
 
 		$this->redirect('/suasMusicas');
 	}

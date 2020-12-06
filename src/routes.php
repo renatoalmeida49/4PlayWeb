@@ -16,10 +16,10 @@ $router->get('/suasMusicas/excluir/{id}', 'SuasMusicasController@excluir');
 
 $router->get('/suasMusicas/{id}', 'SuasMusicasController@music');
 
+$router->get('/playlist/{id}/music/{p1}', 'PlaylistsController@addMusic');
+$router->get('/playlist/{id}', 'PlaylistsController@playlist');
 $router->get('/playlists', 'PlaylistsController@index');
 $router->post('/playlists', 'PlaylistsController@add');
-$router->get('/playlist/{id}', 'PlaylistsController@playlist');
-$router->get('/playlist/{id}/addMusic/{idMusic}', 'PlaylistsController@addMusic');
 
 
 $router->get('/settings', 'SettingsController@index');

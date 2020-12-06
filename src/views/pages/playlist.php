@@ -10,7 +10,7 @@
             <p class="h2"><?= $playlist[0]->descricao;?></p>
             
             
-            <div class="col">(Músicas da playlist)</div>
+            <div class="col"><?=  print_r($musics); ?></div>
         
         </div>
 

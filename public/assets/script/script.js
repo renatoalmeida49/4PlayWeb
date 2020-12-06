@@ -48,7 +48,7 @@ if(document.querySelectorAll('.modal-playlists')) {
                     html += "<td>" + parseInt(index+1) + "</td>"
                     html += "<td>" + e['name'] + "</td>"
                     html += "<td>" + e['descricao'] + "</td>"
-                    html += "<td><a href='"+BASE+"/playlist/" + e['id'] + "/addMusic/" + idMusic + "'>Add</a></td>"
+                    html += "<td><a href='"+BASE+"/playlist/" + e['id'] + "/music/" + idMusic + "'>Add</a></td>"
                     html += "</tr>"
 
                     $('.tbody-playlists').append(html)
