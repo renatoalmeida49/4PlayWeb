@@ -6,22 +6,36 @@ use src\models\Music;
 use \src\Config;
 
 class PlaylistMusicHandler {
+    // ADD A MUSIC TO THE PLAYLIST
     public static function add($idplaylist, $idmusic) {
 
-        // ------------ TODO
-        // 1 - Need to check if the music is already in the playlist
-
+        if(self::alreadyInPlaylist($idplaylist, $idmusic)) {
+            return false;
+        }
 
         PlaylistMusic::insert([
             'id_music' => $idmusic,
             'id_playlist' => $idplaylist
         ])->execute();
+
+        return true;
+    }
+
+    // CHECKS IF THE MUSIC IS ALREADY IN THE PLAYLIST
+    private function alreadyInPlaylist($idplaylist, $idmusic) {
+        $result = PlaylistMusic::select()
+            ->where('id_music', $idmusic)
+            ->where('id_playlist', $idplaylist)
+        ->one();
+
+        return $result ? true : false;
     }
 
     public static function getMusics($id) {
 
         $musicList = PlaylistMusic::select()
                 ->join('musics', 'id_music', '=', 'musics.id')
+                ->where('id_playlist', $id)
             ->get();
         
         

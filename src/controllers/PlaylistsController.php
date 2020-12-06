@@ -57,9 +57,23 @@ class PlaylistsController extends Controller {
 		$idPlaylist = $attr['id'];
 		$idMusic = $attr['p1'];
 
+		// TODO
+		// 1 - Let the user know if the music was added or not to the playlist.
+		// (The music will be added if it's already in the playlist)
+
 		PlaylistMusicHandler::add($idPlaylist, $idMusic);
 
 		$this->redirect('/suasMusicas');
+	}
+
+	public function removeMusic($attr = []) {
+		$idPlaylist = $attr['id'];
+		$idMusic = $attr['p1'];
+
+		// TODO 
+		// The implementation of the function itself
+
+		echo "You've reached 'removeMusic' with $idPlaylist and $idMusic";
 	}
 
 }
