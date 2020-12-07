@@ -62,4 +62,11 @@ class PlaylistMusicHandler {
 
         return $feed;
     }
+
+    public static function removeMusic($idPlaylist, $idMusic) {
+        PlaylistMusic::delete()
+            ->where('id_music', $idMusic)
+            ->where('id_playlist', $idPlaylist)
+        ->execute();
+    }
 }

@@ -41,6 +41,26 @@ class PlaylistsController extends Controller {
 		$this->redirect('/playlists');
 	}
 
+	public function excluir($attr = []) {
+		$id = $attr['id'];
+
+		PlaylistHandler::excluir($id);
+
+		$this->index();
+	}
+
+	public function edit() {
+		$update = array();
+
+		$update['id'] = filter_input(INPUT_POST, 'id');
+		$update['name'] = filter_input(INPUT_POST, 'name');
+		$update['descricao'] = filter_input(INPUT_POST, 'descricao');
+
+		PlaylistHandler::update($update);
+
+		$this->redirect('/playlist/'.$update['id']);
+	}
+
 	public function playlist($attr = []) {
 		$id = $attr['id'];
 
@@ -73,7 +93,9 @@ class PlaylistsController extends Controller {
 		// TODO 
 		// The implementation of the function itself
 
-		echo "You've reached 'removeMusic' with $idPlaylist and $idMusic";
+		PlaylistMusicHandler::removeMusic($idPlaylist, $idMusic);
+
+		$this->redirect('/playlist/'.$idPlaylist);
 	}
 
 }

@@ -18,7 +18,9 @@ $router->get('/suasMusicas/{id}', 'SuasMusicasController@music');
 
 $router->get('/playlist/{id}/remove/{p1}', 'PlaylistsController@removeMusic');
 $router->get('/playlist/{id}/music/{p1}', 'PlaylistsController@addMusic');
+$router->get('/playlist/excluir/{id}', 'PlaylistsController@excluir');
 $router->get('/playlist/{id}', 'PlaylistsController@playlist');
+$router->post('/playlists/editar', 'PlaylistsController@edit');
 $router->get('/playlists', 'PlaylistsController@index');
 $router->post('/playlists', 'PlaylistsController@add');
 

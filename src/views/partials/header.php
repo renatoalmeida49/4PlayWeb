@@ -6,7 +6,7 @@
       <link rel="icon" type="imagem/png" href="<?=$base;?>/assets/images/logo.png" />
       <link rel="stylesheet" href="<?=$base;?>/assets/css/bootstrap.min.css" />
       <link rel="stylesheet" href="<?=$base;?>/assets/css/styleTemplate.css" />
-      <title>Tela inicial</title>
+      <title>4Play</title>
   </head>
   <body class="bg-dark">
     <header>

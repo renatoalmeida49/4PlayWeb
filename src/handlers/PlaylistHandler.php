@@ -15,6 +15,20 @@ class PlaylistHandler {
         return true;
     }
 
+    public static function excluir($id) {
+        Playlist::delete()
+            ->where('id', $id)
+        ->execute();
+    }
+
+    public static function update($update) {
+        $result = Playlist::update()
+                    ->set('name', $update['name'])
+                    ->set('descricao', $update['descricao'])
+                    ->where('id', $update['id'])
+                ->execute();
+    }
+
     public static function getPlaylists($id) {
         $playlistList = Playlist::select()
                 ->where('idUser', $id)
