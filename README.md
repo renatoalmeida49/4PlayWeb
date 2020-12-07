@@ -23,5 +23,6 @@ It will be all organized by playlists and easily sorted for your use.
 
 ## TODO
 
-* Adding musics
-* Create playlist and include the musics
+* Add another language
+* Include images for playlists
+* Make it responsive
